@@ -1,0 +1,165 @@
+<div class="vs-why-vain color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+
+    {%- if section.settings.title != blank -%}
+      <div class="vs-why-vain__header">
+        <span class="vs-why-vain__eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2 class="vs-why-vain__title">{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="vs-why-vain__grid">
+      {%- for block in section.blocks -%}
+        <div class="vs-why-vain__item" {{ block.shopify_attributes }}>
+          <div class="vs-why-vain__icon-wrap">
+            {%- if block.settings.icon == 'handcrafted' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            {%- elsif block.settings.icon == 'uv' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            {%- elsif block.settings.icon == 'shipping' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            {%- elsif block.settings.icon == 'returns' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+            {%- elsif block.settings.icon == 'acetate' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            {%- elsif block.settings.icon == 'exclusive' -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {%- else -%}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {%- endif -%}
+          </div>
+          <div class="vs-why-vain__text">
+            <h3 class="vs-why-vain__item-title">{{ block.settings.title }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p class="vs-why-vain__item-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Vain Features",
+  "tag": "section",
+  "class": "section-vs-why-vain",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "THE VAIN DIFFERENCE",
+      "label": "Eyebrow Label"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Why Vain Shades?",
+      "label": "Section Title"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "White" },
+        { "value": "scheme-2", "label": "Dark" },
+        { "value": "scheme-3", "label": "Accent" }
+      ],
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "handcrafted", "label": "Handcrafted" },
+            { "value": "uv", "label": "UV Protection" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "acetate", "label": "Acetate / Shield" },
+            { "value": "exclusive", "label": "Exclusive / Star" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Feature Title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Short description of this feature.",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Vain Features",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "handcrafted",
+            "title": "Handcrafted Frames",
+            "description": "Each frame is polished by hand for 72+ hours before it's yours."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "uv",
+            "title": "UV400 Lenses",
+            "description": "Full UV400 protection in every pair — style without sacrifice."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "acetate",
+            "title": "Italian Acetate",
+            "description": "Custom Mazzucchelli acetate sourced directly from Italy."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Express Shipping",
+            "description": "Complimentary express delivery on all orders over $150."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "returns",
+            "title": "30-Day Returns",
+            "description": "Not in love? Return within 30 days, no questions asked."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "exclusive",
+            "title": "Limited Editions",
+            "description": "Small-batch drops. Once they're gone, they're gone for good."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

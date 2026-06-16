@@ -167,6 +167,65 @@
         "color_scheme": "scheme-2"
       }
     },
+    "why_vain": {
+      "type": "vs-why-vain",
+      "blocks": {
+        "feat_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "handcrafted",
+            "title": "Handcrafted Frames",
+            "description": "Each frame is polished by hand for 72+ hours before it's yours."
+          }
+        },
+        "feat_2": {
+          "type": "feature",
+          "settings": {
+            "icon": "uv",
+            "title": "UV400 Lenses",
+            "description": "Full UV400 protection in every pair — style without sacrifice."
+          }
+        },
+        "feat_3": {
+          "type": "feature",
+          "settings": {
+            "icon": "acetate",
+            "title": "Italian Acetate",
+            "description": "Custom Mazzucchelli acetate sourced directly from Italy."
+          }
+        },
+        "feat_4": {
+          "type": "feature",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Express Shipping",
+            "description": "Complimentary express delivery on all orders over $150."
+          }
+        },
+        "feat_5": {
+          "type": "feature",
+          "settings": {
+            "icon": "returns",
+            "title": "30-Day Returns",
+            "description": "Not in love? Return within 30 days, no questions asked."
+          }
+        },
+        "feat_6": {
+          "type": "feature",
+          "settings": {
+            "icon": "exclusive",
+            "title": "Limited Editions",
+            "description": "Small-batch drops. Once they're gone, they're gone for good."
+          }
+        }
+      },
+      "block_order": ["feat_1", "feat_2", "feat_3", "feat_4", "feat_5", "feat_6"],
+      "settings": {
+        "eyebrow": "THE VAIN DIFFERENCE",
+        "title": "Why Vain Shades?",
+        "color_scheme": "scheme-1"
+      }
+    },
     "newsletter_signup": {
       "type": "vs-newsletter",
       "settings": {
@@ -183,6 +242,7 @@
     "editorial_grid",
     "featured_products",
     "lookbook_split",
+    "why_vain",
     "newsletter_signup"
   ]
 }

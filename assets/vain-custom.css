@@ -3542,3 +3542,132 @@ nav[aria-label="breadcrumbs"] a:hover {
   width: 100% !important;
   overflow: hidden;
 }
+
+/* ============================================================
+   WHY VAIN — FEATURES SECTION (vs-why-vain)
+   ============================================================ */
+
+.vs-why-vain {
+  padding: 10rem 0;
+  background-color: var(--vs-white);
+}
+
+.vs-why-vain__header {
+  text-align: center;
+  margin-bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.vs-why-vain__eyebrow {
+  font-family: var(--font-momo);
+  font-size: 1.05rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+  font-weight: 700;
+}
+
+.vs-why-vain__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3.2rem, 5vw, 5.2rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
+}
+
+.vs-why-vain__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem 6rem;
+}
+
+@media (max-width: 989px) {
+  .vs-why-vain__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .vs-why-vain__grid {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+}
+
+.vs-why-vain__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.4rem;
+  padding: 3.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: default;
+}
+
+.vs-why-vain__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+  border-color: var(--vs-accent);
+}
+
+.vs-why-vain__icon-wrap {
+  flex-shrink: 0;
+  width: 5.6rem;
+  height: 5.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--vs-dark);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.vs-why-vain__item:hover .vs-why-vain__icon-wrap {
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+  border-color: var(--vs-dark);
+}
+
+.vs-why-vain__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-top: 0.6rem;
+}
+
+.vs-why-vain__item-title {
+  font-family: var(--font-lato) !important;
+  font-size: 1.9rem !important;
+  font-weight: 400 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.3 !important;
+}
+
+.vs-why-vain__item-desc {
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: var(--vs-body);
+  margin: 0;
+}
+
+@media (max-width: 749px) {
+  .vs-why-vain {
+    padding: 6rem 0;
+  }
+
+  .vs-why-vain__header {
+    margin-bottom: 4.8rem;
+  }
+
+  .vs-why-vain__item {
+    padding: 2.4rem;
+  }
+}
