@@ -2822,3 +2822,51 @@ nav[aria-label="breadcrumbs"] a:hover {
     padding: 6rem 0;
   }
 }
+
+/* ============================================================
+   SHOP PAGE / COLLECTION PRODUCT GRID SYNC
+   ============================================================ */
+.collection .product-grid {
+  display: grid !important;
+  gap: 1px !important;
+  background-color: rgba(18, 18, 18, 0.08) !important;
+  border: 1px solid rgba(18, 18, 18, 0.08) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.collection .product-grid .grid__item {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: var(--vs-white);
+}
+
+.collection .product-grid .vs-product-card {
+  height: 100%;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 750px) {
+  .collection .product-grid.grid--4-col-desktop {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .collection .product-grid.grid--3-col-desktop {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .collection .product-grid.grid--2-col-desktop {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 749px) {
+  .collection .product-grid.grid--2-col-tablet-down {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .collection .product-grid.grid--1-col-tablet-down {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
