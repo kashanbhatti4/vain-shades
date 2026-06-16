@@ -1,0 +1,83 @@
+<div class="vs-hero">
+  <picture class="vs-hero__media">
+    <source media="(max-width: 749px)" srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | image_url: width: 750 }}{% else %}https://cdn.shopify.com/s/files/1/0779/1804/4348/files/herobg-m.jpg?v=1781624284{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <img src="{{ section.settings.image | image_url: width: 1800 }}" alt="{{ section.settings.image.alt | escape }}" loading="eager" fetchpriority="high">
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </picture>
+  <div class="vs-hero__overlay" style="opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};"></div>
+  <div class="vs-hero__content page-width">
+    <div class="vs-hero__box">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="vs-hero__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <div class="vs-hero__text rte">{{ section.settings.subtext }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="vs-hero__button button button--primary">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Hero Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image (Fallback to hardcoded if blank)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "See the World Differently.",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "default": "<p>Statement sunglasses. Bold. Glamorous. Fashion-forward. Designed to make you stand out, not fit in.</p>",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Shop Now",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40,
+      "label": "Overlay Opacity"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Banner"
+    }
+  ]
+}
+{% endschema %}

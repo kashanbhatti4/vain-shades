@@ -10,51 +10,15 @@
 {
   "sections": {
     "hero_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "See the World Differently.",
-            "heading_size": "h0"
-          }
-        },
-        "subtext": {
-          "type": "text",
-          "settings": {
-            "text": "Statement sunglasses. Bold. Glamorous. Fashion-forward. Designed to make you stand out, not fit in.",
-            "text_style": "body"
-          }
-        },
-        "cta": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "subtext",
-        "cta"
-      ],
+      "type": "vs-hero",
       "settings": {
         "image": "shopify://shop_images/herobg2.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "left",
-        "show_text_below": true
+        "image_mobile": "",
+        "heading": "See the World Differently.",
+        "subtext": "<p>Statement sunglasses. Bold. Glamorous. Fashion-forward. Designed to make you stand out, not fit in.</p>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "image_overlay_opacity": 40
       }
     },
     "brand_statement": {

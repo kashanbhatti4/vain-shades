@@ -423,42 +423,114 @@ p {
   align-items: center;
 }
 
-/* Override Dawn image-banner section */
-.shopify-section .banner {
+/* ============================================================
+   CUSTOM HERO BANNER (vs-hero)
+   ============================================================ */
+.vs-hero {
+  position: relative;
+  width: 100%;
   min-height: 85vh;
-  background-color: var(--vs-dark) !important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background-color: var(--vs-dark);
+  overflow: hidden;
 }
 
-.banner__content {
+.vs-hero__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.vs-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.vs-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
   z-index: 2;
-  align-items: flex-end !important;
-  justify-content: flex-start !important;
-  text-align: left !important;
 }
 
-.banner__box {
-  align-items: flex-start !important;
-  text-align: left !important;
-  justify-content: flex-start !important;
+.vs-hero__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 100% !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.vs-hero__box {
+  max-width: 65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 2rem;
+}
+
+.vs-hero__heading {
+  font-family: var(--font-lato) !important;
+  font-size: 5.2rem !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--vs-white) !important;
+  margin: 0 !important;
+  line-height: 1.1 !important;
+}
+
+.vs-hero__text {
+  font-family: var(--font-lato) !important;
+  font-size: 1.8rem !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 !important;
+}
+
+.vs-hero__text p {
+  margin: 0 !important;
+}
+
+.vs-hero__button {
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 749px) {
-  .banner__content {
+  .vs-hero {
+    min-height: 75vh;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .vs-hero__content {
     padding: 4rem 2.4rem !important;
   }
-  .banner__media img {
-    display: none !important;
+
+  .vs-hero__heading {
+    font-size: 3.6rem !important;
   }
-  .banner__media {
-    background-image: url("https://cdn.shopify.com/s/files/1/0779/1804/4348/files/herobg-m.jpg?v=1781624284") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-  }
-  .banner__box {
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+
+  .vs-hero__text {
+    font-size: 1.5rem !important;
   }
 }
 
