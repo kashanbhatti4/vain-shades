@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_banner": {
@@ -35,35 +44,35 @@
         "cta"
       ],
       "settings": {
+        "image": "shopify://shop_images/herobg.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
         "show_text_below": false
       }
     },
     "featured_products": {
       "type": "featured-collection",
       "settings": {
+        "collection": "feature-products",
+        "products_to_show": 3,
         "title": "Featured Products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "feature-products",
-        "products_to_show": 3,
         "columns_desktop": 3,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "outline",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": true,
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -71,6 +80,7 @@
         "show_rating": false,
         "quick_add": "standard",
         "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -187,7 +197,7 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Vain Shades was created for those who don\u2019t follow fashion \u2014 they set it. Our statement sunglasses are designed to command attention, crafted for the glamorous, the unapologetic, and the bold.</p>",
+            "text": "<p>Vain Shades was created for those who don’t follow fashion — they set it. Our statement sunglasses are designed to command attention, crafted for the glamorous, the unapologetic, and the bold.</p>",
             "text_style": "body"
           }
         },
@@ -210,11 +220,13 @@
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "scheme-1",
         "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-1",
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -260,11 +272,11 @@
         "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
+        "button_label": "Follow @VainShades",
+        "button_link": "https://www.instagram.com/",
         "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "primary",
-        "button_label": "Follow @VainShades",
-        "button_link": "https://www.instagram.com/",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -289,7 +301,8 @@
           }
         },
         "form": {
-          "type": "email_form"
+          "type": "email_form",
+          "settings": {}
         }
       },
       "block_order": [
