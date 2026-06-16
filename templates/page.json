@@ -12,8 +12,8 @@
     "about_hero": {
       "type": "vs-about-hero",
       "settings": {
-        "image": "shopify://shop_images/herobg2.jpg",
-        "image_mobile": "",
+        "image": "shopify://shop_images/about.jpg",
+        "image_mobile": "shopify://shop_images/about-m.jpg",
         "eyebrow": "OUR STORY",
         "heading": "Born to stand out.",
         "subtext": "<p>Vain Shades designs and crafts statement luxury eyewear for the unapologetic and glamorous.</p>",
@@ -34,6 +34,7 @@
         "col_1": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/about-4.jpg",
             "title": "Precision Design",
             "caption": "Atlanta Studio"
           }
@@ -41,6 +42,7 @@
         "col_2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/about-1.jpg",
             "title": "72H Hand Polish",
             "caption": "Artisanal Polish"
           }
@@ -48,6 +50,7 @@
         "col_3": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/about-2.jpg",
             "title": "Gold Hardware",
             "caption": "Hinge Detail"
           }
@@ -71,7 +74,8 @@
           "settings": {
             "title": "Buckhead Showroom",
             "address": "3280 Peachtree Rd NE\nAtlanta, GA 30305",
-            "hours": "<p>Mon - Sat: 11am - 7pm<br>Sun: 12pm - 6pm</p>"
+            "hours": "<p>Mon - Sat: 11am - 7pm<br>Sun: 12pm - 6pm</p>",
+            "link": ""
           }
         },
         "loc_2": {
@@ -79,7 +83,8 @@
           "settings": {
             "title": "Ponce City Market",
             "address": "675 Ponce De Leon Ave NE\nAtlanta, GA 30308",
-            "hours": "<p>Mon - Sat: 10am - 9pm<br>Sun: 11am - 8pm</p>"
+            "hours": "<p>Mon - Sat: 10am - 9pm<br>Sun: 11am - 8pm</p>",
+            "link": ""
           }
         }
       },
