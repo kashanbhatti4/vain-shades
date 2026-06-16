@@ -1,72 +1,37 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "Send us a message",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "info": {
-      "type": "multicolumn",
+    "vs-contact": {
+      "type": "vs-contact",
       "blocks": {
-        "col_1": {
-          "type": "column",
+        "info_1": {
+          "type": "info_block",
           "settings": {
             "title": "Customer Support",
-            "text": "<p>Need help with an order or styling advice?<br>Email: support@vainshades.com<br>Phone: (404) 555-0199</p>"
+            "content": "<p>Mon – Fri: 9am – 6pm EST<br>Email: support@vainshades.com<br>Phone: (404) 555-0199</p>"
           }
         },
-        "col_2": {
-          "type": "column",
+        "info_2": {
+          "type": "info_block",
           "settings": {
-            "title": "Press & Editorial",
-            "text": "<p>For editorial shoots, collaborations, or retail partnerships:<br>Email: press@vainshades.com</p>"
+            "title": "Press & Collaborations",
+            "content": "<p>For styling pull requests, lookbooks, or media features:<br>Email: press@vainshades.com</p>"
+          }
+        },
+        "info_3": {
+          "type": "info_block",
+          "settings": {
+            "title": "Retail Partnerships",
+            "content": "<p>Interested in carrying Vain Shades?<br>Email: trade@vainshades.com</p>"
           }
         }
       },
-      "block_order": [
-        "col_1",
-        "col_2"
-      ],
+      "block_order": ["info_1", "info_2", "info_3"],
       "settings": {
-        "title": "Connect With Us",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "title": "Connect with Vain.",
+        "description": "Have a styling question or need support with your order? Reach out to our design and customer service team.",
+        "color_scheme": "scheme-1"
       }
     }
   },
-  "order": [
-    "main",
-    "form",
-    "info"
-  ]
+  "order": ["vs-contact"]
 }

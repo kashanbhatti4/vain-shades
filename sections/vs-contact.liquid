@@ -1,0 +1,196 @@
+<div class="vs-contact color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="vs-contact__grid">
+      
+      <!-- Left Column: Information -->
+      <div class="vs-contact__info-col">
+        <span class="vs-contact__eyebrow vs-momo">CONNECT</span>
+        <h1 class="vs-contact__title">{{ section.settings.title }}</h1>
+        {%- if section.settings.description != blank -%}
+          <p class="vs-contact__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+
+        <div class="vs-contact__details-list">
+          {%- for block in section.blocks -%}
+            <div class="vs-contact__detail-item" {{ block.shopify_attributes }}>
+              <h3 class="vs-contact__detail-title">{{ block.settings.title }}</h3>
+              <div class="vs-contact__detail-content rte">
+                {{ block.settings.content }}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="vs-contact__form-col">
+        <div class="vs-contact__form-wrapper">
+          
+          {%- form 'contact', id: 'ContactForm', class: 'vs-contact__form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="vs-contact__message vs-contact__message--success" tabindex="-1" autofocus>
+                <p>Thank you for reaching out. We will get back to you shortly.</p>
+              </div>
+            {%- elsif form.errors -%}
+              <div class="vs-contact__message vs-contact__message--error" tabindex="-1" autofocus>
+                <p>Please adjust the following errors:</p>
+                <ul>
+                  {%- for field in form.errors -%}
+                    <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            <div class="vs-contact__field-wrapper">
+              <div class="vs-contact__field">
+                <input
+                  class="vs-contact__input"
+                  autocomplete="name"
+                  type="text"
+                  id="ContactForm-name"
+                  name="contact[{{ 'templates.contact.form.name' | t }}]"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  placeholder="NAME"
+                  required
+                >
+                <label class="vs-contact__label" for="ContactForm-name">NAME</label>
+              </div>
+
+              <div class="vs-contact__field">
+                <input
+                  autocomplete="email"
+                  type="email"
+                  id="ContactForm-email"
+                  class="vs-contact__input"
+                  name="contact[email]"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  aria-required="true"
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="ContactForm-email-error"
+                  {% endif %}
+                  placeholder="EMAIL"
+                  required
+                >
+                <label class="vs-contact__label" for="ContactForm-email">EMAIL</label>
+              </div>
+            </div>
+
+            <div class="vs-contact__field">
+              <input
+                type="tel"
+                id="ContactForm-phone"
+                class="vs-contact__input"
+                autocomplete="tel"
+                name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                pattern="[0-9\-]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                placeholder="PHONE NUMBER"
+              >
+              <label class="vs-contact__label" for="ContactForm-phone">PHONE NUMBER</label>
+            </div>
+
+            <div class="vs-contact__field">
+              <textarea
+                rows="5"
+                id="ContactForm-body"
+                class="vs-contact__input vs-contact__input--textarea"
+                name="contact[{{ 'templates.contact.form.comment' | t }}]"
+                placeholder="HOW CAN WE HELP YOU?"
+                required
+              >
+                {{- form.body -}}
+              </textarea>
+              <label class="vs-contact__label" for="ContactForm-body">MESSAGE</label>
+            </div>
+
+            <div class="vs-contact__submit">
+              <button type="submit" class="vs-contact__btn">
+                SEND MESSAGE 
+                <span class="vs-contact__btn-arrow">→</span>
+              </button>
+            </div>
+          {%- endform -%}
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Contact Form",
+  "tag": "section",
+  "class": "section-vs-contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Connect with Vain.",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "default": "Have a styling question or need support with your order? Reach out to our design and customer service team.",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" }
+      ],
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info_block",
+      "name": "Information Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Customer Service",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "default": "<p>Mon - Fri: 9am - 6pm EST<br>Email: support@vainshades.com<br>Phone: (404) 555-0199</p>",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Contact Form",
+      "blocks": [
+        {
+          "type": "info_block",
+          "settings": {
+            "title": "Customer Support"
+          }
+        },
+        {
+          "type": "info_block",
+          "settings": {
+            "title": "Press & Collaborations",
+            "content": "<p>For styling pull requests, lookbooks, or media features:<br>Email: press@vainshades.com</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
