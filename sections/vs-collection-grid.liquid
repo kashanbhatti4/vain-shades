@@ -1,0 +1,321 @@
+{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+{%- assign filter_count = 0 -%}
+{%- for filter in collection.filters -%}
+  {%- for value in filter.active_values -%}
+    {%- assign filter_count = filter_count | plus: 1 -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+<div class="vs-collection color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+
+    <!-- Collection Header -->
+    <div class="vs-collection__header">
+      <div class="vs-collection__header-text">
+        <span class="vs-collection__eyebrow">VAIN SHADES</span>
+        <h1 class="vs-collection__title">{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}
+          <p class="vs-collection__desc">{{ collection.description }}</p>
+        {%- endif -%}
+      </div>
+      <div class="vs-collection__header-meta">
+        <span class="vs-collection__count">{{ collection.products_count }} styles</span>
+      </div>
+    </div>
+
+    <!-- Toolbar: Sort + Filter -->
+    <div class="vs-collection__toolbar">
+      {%- if section.settings.enable_filtering and collection.filters.size > 0 -%}
+        <div class="vs-collection__filters">
+          {%- for filter in collection.filters -%}
+            <details class="vs-collection__filter-group" id="Filter-{{ filter.param_name }}">
+              <summary class="vs-collection__filter-label">
+                {{ filter.label }}
+                {%- assign active = 0 -%}
+                {%- for v in filter.active_values -%}{%- assign active = active | plus: 1 -%}{%- endfor -%}
+                {%- if active > 0 -%}<span class="vs-collection__filter-count">{{ active }}</span>{%- endif -%}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </summary>
+              <div class="vs-collection__filter-dropdown">
+                {%- if filter.type == 'price_range' -%}
+                  <div class="vs-collection__price-range">
+                    {%- assign min_value = filter.min_value.value | default: 0 -%}
+                    {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
+                    <span>{{ min_value | money_without_trailing_zeros }} – {{ max_value | money_without_trailing_zeros }}</span>
+                  </div>
+                {%- else -%}
+                  {%- for value in filter.values -%}
+                    <label class="vs-collection__filter-option {% if value.active %}is-active{% endif %}">
+                      <input
+                        type="checkbox"
+                        name="{{ value.param_name }}"
+                        value="{{ value.value }}"
+                        {% if value.active %}checked{% endif %}
+                        {% if value.count == 0 and value.active == false %}disabled{% endif %}
+                        form="vs-collection-form"
+                      >
+                      <span>{{ value.label }}</span>
+                      <span class="vs-collection__filter-tally">({{ value.count }})</span>
+                    </label>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </details>
+          {%- endfor -%}
+
+          {%- if filter_count > 0 -%}
+            <a href="{{ collection.url }}" class="vs-collection__clear-btn">
+              Clear all ({{ filter_count }})
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.enable_sorting -%}
+        <div class="vs-collection__sort">
+          <label class="vs-collection__sort-label" for="SortBy">Sort</label>
+          <select
+            id="SortBy"
+            name="sort_by"
+            class="vs-collection__sort-select"
+            form="vs-collection-form"
+            aria-label="Sort by"
+          >
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
+                {{ option.name }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Hidden form for filter/sort -->
+    <form id="vs-collection-form" method="get" action="{{ collection.url }}">
+      <input type="hidden" name="sort_by" value="{{ sort_by }}">
+    </form>
+
+    <!-- Product Grid -->
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="vs-product-grid__container columns-{{ section.settings.columns_desktop }}" id="vs-collection-grid">
+          {%- for product in collection.products -%}
+            {%- assign product_form_id = 'vs-col-add-' | append: section.id | append: product.id -%}
+            <div class="vs-product-card">
+
+              <div class="vs-product-card__image-wrapper">
+                <a href="{{ product.url }}" class="vs-product-card__link" aria-label="{{ product.title | escape }}">
+                  {%- if product.featured_media != blank -%}
+                    <img
+                      src="{{ product.featured_media | image_url: width: 600 }}"
+                      alt="{{ product.featured_media.alt | escape }}"
+                      loading="lazy"
+                      width="100%"
+                      height="100%"
+                      class="vs-product-card__image {% if product.media[1] != blank and section.settings.show_secondary_image %}vs-product-card__image--primary{% endif %}"
+                    >
+                    {%- if product.media[1] != blank and section.settings.show_secondary_image -%}
+                      <img
+                        src="{{ product.media[1] | image_url: width: 600 }}"
+                        alt="{{ product.media[1].alt | escape }}"
+                        loading="lazy"
+                        width="100%"
+                        height="100%"
+                        class="vs-product-card__image vs-product-card__image--secondary"
+                      >
+                    {%- endif -%}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </a>
+
+                {%- if product.compare_at_price > product.price -%}
+                  <span class="vs-product-card__badge vs-product-card__badge--sale">SALE</span>
+                {%- elsif product.available == false -%}
+                  <span class="vs-product-card__badge vs-product-card__badge--sold-out">SOLD OUT</span>
+                {%- endif -%}
+              </div>
+
+              <div class="vs-product-card__details">
+                <div class="vs-product-card__meta-row">
+                  <span class="vs-product-card__type">
+                    {%- if product.type != blank -%}
+                      {{ product.type | upcase }}
+                    {%- else -%}
+                      LUXURY SHADES
+                    {%- endif -%}
+                  </span>
+
+                  {%- for option in product.options_with_values -%}
+                    {%- assign option_name_lower = option.name | downcase -%}
+                    {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
+                      <div class="vs-product-card__swatches" aria-label="Available Colors">
+                        {%- for value in option.values limit: 3 -%}
+                          {%- assign swatch_color = value | split: ' ' | last | handle -%}
+                          <span
+                            class="vs-product-card__swatch"
+                            style="background-color: {{ swatch_color }};"
+                            title="{{ value | escape }}"
+                          ></span>
+                        {%- endfor -%}
+                        {%- if option.values.size > 3 -%}
+                          <span class="vs-product-card__swatches-more">+{{ option.values.size | minus: 3 }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+
+                <h2 class="vs-product-card__title">
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                </h2>
+
+                <div class="vs-product-card__price">
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="vs-product-card__price--compare">{{ product.compare_at_price | money }}</span>
+                    <span class="vs-product-card__price--sale">{{ product.price | money }}</span>
+                  {%- else -%}
+                    <span class="vs-product-card__price--regular">{{ product.price | money }}</span>
+                  {%- endif -%}
+                </div>
+
+                {%- if product.available -%}
+                  <div class="vs-product-card__actions">
+                    {%- form 'product', product, id: product_form_id, class: 'form vs-product-card__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      <button type="submit" name="add" class="vs-product-card__btn-outline">
+                        ADD TO CART
+                      </button>
+                    {%- endform -%}
+                  </div>
+                {%- endif -%}
+              </div>
+
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <!-- Pagination -->
+        {%- if paginate.pages > 1 -%}
+          <div class="vs-collection__pagination">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="vs-collection__page-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Prev
+              </a>
+            {%- endif -%}
+
+            <div class="vs-collection__page-numbers">
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}" class="vs-collection__page-num">{{ part.title }}</a>
+                {%- else -%}
+                  {%- if part.title == paginate.current_page -%}
+                    <span class="vs-collection__page-num is-current">{{ part.title }}</span>
+                  {%- else -%}
+                    <span class="vs-collection__page-num vs-collection__page-ellipsis">{{ part.title }}</span>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="vs-collection__page-btn">
+                Next
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      {%- else -%}
+        <div class="vs-collection__empty">
+          <p>No products found in this collection.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="vs-collection__page-btn">Browse All</a>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+
+  </div>
+</div>
+
+<script>
+  // Auto-submit form on sort change
+  document.addEventListener('DOMContentLoaded', function () {
+    var sortSelect = document.getElementById('SortBy');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function () {
+        document.getElementById('vs-collection-form').submit();
+      });
+    }
+    // Auto-submit on filter checkbox change
+    var checkboxes = document.querySelectorAll('#vs-collection-form input[type="checkbox"], form[id="vs-collection-form"] ~ * input[type="checkbox"]');
+    document.querySelectorAll('.vs-collection__filter-option input[type="checkbox"]').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        document.getElementById('vs-collection-form').submit();
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "tag": "section",
+  "class": "section-vs-collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 16,
+      "label": "Products Per Page"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Columns on Desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "Show Secondary Image on Hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "Enable Filtering"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "Enable Sorting"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "White" },
+        { "value": "scheme-2", "label": "Dark" }
+      ],
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid"
+    }
+  ]
+}
+{% endschema %}
