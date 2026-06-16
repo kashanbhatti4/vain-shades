@@ -1583,9 +1583,10 @@ cart-drawer,
   padding-right: 1.6rem !important;
 }
 
-/* Product name */
+/* Product name — override Dawn's .break class which sets word-break: break-all */
 .cart-item__name,
-.cart-item__name.h4 {
+.cart-item__name.h4,
+.cart-item__name.break {
   font-family: var(--font-lato) !important;
   font-size: 1.4rem !important;
   font-weight: 700 !important;
@@ -1594,10 +1595,19 @@ cart-drawer,
   text-decoration: none !important;
   transition: color var(--transition-base) !important;
   line-height: 1.3 !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
 }
 
 .cart-item__name:hover {
   color: var(--vs-accent) !important;
+}
+
+/* Ensure the details column has enough room in the table */
+.cart-item__details {
+  min-width: 0;
+  width: auto;
 }
 
 /* Product options / variant text */
@@ -1972,150 +1982,87 @@ textarea:focus {
 /* ============================================================
    MOBILE MENU DRAWER
    ============================================================ */
-.menu-drawer-container[open] ~ * {
-  pointer-events: none;
-}
 
+/* Dark panel — matches the site header */
 .menu-drawer {
   background-color: var(--vs-dark) !important;
-  color: var(--vs-white) !important;
-  border-right: none !important;
+  border-top: 3px solid var(--vs-accent) !important;
   box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Top accent stripe matching the header */
-.menu-drawer__inner-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border-top: 3px solid var(--vs-accent) !important;
+/* Gradient/color-scheme override so Dawn doesn't re-apply its bg */
+.menu-drawer.gradient {
+  background: var(--vs-dark) !important;
 }
 
-.menu-drawer__navigation-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 3.2rem 0 0 !important;
-}
-
-.menu-drawer__navigation {
-  flex: 1;
-  overflow-y: auto;
-}
-
-/* Main nav links */
+/* ── Nav links ─────────────────────────────────────────────── */
 .menu-drawer__menu-item,
-.menu-drawer__navigation-item > a,
-.menu-drawer__menu > li > a,
-.menu-drawer__menu > li > details > summary {
+.menu-drawer__navigation-item > a {
   font-family: var(--font-lato) !important;
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.75) !important;
-  padding: 1.6rem 3.2rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-  transition: color var(--transition-base), background-color var(--transition-base), padding-left var(--transition-base) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  position: relative !important;
-}
-
-.menu-drawer__menu-item::before,
-.menu-drawer__navigation-item > a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 0;
-  background-color: var(--vs-accent);
-  transition: width var(--transition-base);
-}
-
-.menu-drawer__menu-item:hover::before,
-.menu-drawer__navigation-item > a:hover::before,
-.menu-drawer__menu-item--active::before {
-  width: 3px !important;
+  transition: color var(--transition-base), background-color var(--transition-base) !important;
 }
 
 .menu-drawer__menu-item:hover,
 .menu-drawer__navigation-item > a:hover {
   color: var(--vs-white) !important;
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  padding-left: 3.8rem !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 .menu-drawer__menu-item--active,
 .menu-drawer__menu-item[aria-current="page"] {
   color: var(--vs-accent) !important;
+  border-left: 3px solid var(--vs-accent) !important;
 }
 
-/* Submenu */
+/* ── Submenu ───────────────────────────────────────────────── */
 .menu-drawer__submenu {
-  background-color: rgba(0, 0, 0, 0.3) !important;
+  background-color: rgba(0, 0, 0, 0.35) !important;
 }
 
 .menu-drawer__submenu .menu-drawer__menu-item {
-  font-size: 1.3rem !important;
-  padding: 1.2rem 3.2rem 1.2rem 4.8rem !important;
-  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 1.2rem !important;
+  color: rgba(255, 255, 255, 0.55) !important;
 }
 
 .menu-drawer__submenu .menu-drawer__menu-item:hover {
   color: var(--vs-white) !important;
-  padding-left: 5.4rem !important;
 }
 
-/* Back button in submenu */
+/* Back button */
 .menu-drawer__close-button {
   font-family: var(--font-lato) !important;
-  font-size: 1.2rem !important;
+  font-size: 1.1rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   color: var(--vs-accent) !important;
-  padding: 1.6rem 3.2rem !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
   background: transparent !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 0.8rem !important;
-  width: 100% !important;
 }
 
-.menu-drawer__close-button svg {
-  fill: var(--vs-accent) !important;
-  transform: rotate(180deg);
+/* Arrow/caret icons */
+.menu-drawer__menu-item svg,
+.menu-drawer__navigation-item > a svg {
+  fill: rgba(255, 255, 255, 0.35) !important;
 }
 
-/* Arrow icon color */
-.menu-drawer__menu-item .svg-wrapper svg,
-.menu-drawer__menu-item .icon-caret {
-  fill: rgba(255, 255, 255, 0.4) !important;
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Utility links (account, social) */
+/* ── Utility area (account + social) ──────────────────────── */
 .menu-drawer__utility-links {
-  padding: 2.4rem 3.2rem 3.2rem !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .menu-drawer__account {
   font-family: var(--font-lato) !important;
   font-size: 1.2rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.6) !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  margin-bottom: 2.4rem !important;
+  color: rgba(255, 255, 255, 0.55) !important;
   transition: color var(--transition-base) !important;
 }
 
@@ -2123,68 +2070,21 @@ textarea:focus {
   color: var(--vs-white) !important;
 }
 
-.menu-drawer__account svg {
-  fill: rgba(255, 255, 255, 0.6) !important;
-}
-
-.menu-drawer__account:hover svg {
-  fill: var(--vs-white) !important;
-}
-
-/* Social icons in drawer */
-.menu-drawer .list-social {
-  display: flex !important;
-  gap: 1.6rem !important;
-  flex-wrap: wrap !important;
-  margin-top: 2rem !important;
-}
-
-.menu-drawer .list-social__link {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 3.6rem !important;
-  height: 3.6rem !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  transition: border-color var(--transition-base), background-color var(--transition-base) !important;
-}
-
-.menu-drawer .list-social__link:hover {
-  border-color: var(--vs-accent) !important;
-  background-color: var(--vs-accent) !important;
-}
-
 .menu-drawer .list-social__link svg {
-  fill: rgba(255, 255, 255, 0.6) !important;
-  width: 1.6rem !important;
-  height: 1.6rem !important;
+  fill: rgba(255, 255, 255, 0.5) !important;
   transition: fill var(--transition-base) !important;
 }
 
 .menu-drawer .list-social__link:hover svg {
-  fill: var(--vs-white) !important;
+  fill: var(--vs-accent) !important;
 }
 
-/* Localization */
-.menu-drawer__localization select,
+/* Localization selects */
 .menu-drawer__localization .select__select {
   background-color: rgba(255, 255, 255, 0.08) !important;
   color: rgba(255, 255, 255, 0.7) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   font-family: var(--font-lato) !important;
-}
-
-/* Hamburger icon — white on dark header */
-.header__icon--menu svg {
-  fill: var(--vs-white) !important;
-  color: var(--vs-white) !important;
-}
-
-.header__icon--menu path,
-.header__icon--menu line,
-.header__icon--menu rect {
-  stroke: var(--vs-white) !important;
-  fill: var(--vs-white) !important;
 }
 
 /* ============================================================
