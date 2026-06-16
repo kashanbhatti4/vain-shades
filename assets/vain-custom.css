@@ -2044,35 +2044,27 @@ cart-items.is-empty .vs-cp__continue {
   color: var(--vs-body);
 }
 
-/* Item list */
+/* Item list — flex, with .cart-item specificity to beat Dawn's
+   component-cart-items.css (loaded globally) which forces .cart-item
+   into a display:grid table that collapsed the columns. */
 .vs-cp__list {
   display: flex;
   flex-direction: column;
 }
 
-.vs-cp-item {
-  display: grid;
-  align-items: center;
-  gap: 1.2rem 1.4rem;
-  padding: 2.4rem 0;
-  border-bottom: 1px solid var(--vs-surface);
-  grid-template-columns: 9rem 1fr auto;
-  grid-template-areas:
-    'media info   remove'
-    'media qty    total';
-}
-
-@media screen and (min-width: 750px) {
-  .vs-cp-item {
-    gap: 2.4rem;
-    grid-template-columns: 11rem 1fr auto auto 4rem;
-    grid-template-areas: 'media info qty total remove';
-  }
+.vs-cp-item.cart-item {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 1.4rem !important;
+  margin: 0 !important;
+  padding: 2.4rem 0 !important;
+  border-bottom: 1px solid var(--vs-surface) !important;
+  grid-template: none !important;
 }
 
 .vs-cp-item__media {
-  grid-area: media;
-  align-self: start;
+  flex: 0 0 8rem;
+  width: 8rem;
   display: block;
 }
 
@@ -2083,9 +2075,34 @@ cart-items.is-empty .vs-cp__continue {
   background-color: var(--vs-surface);
 }
 
-.vs-cp-item__info {
-  grid-area: info;
+/* Main column holds info + controls; min-width:0 lets the name wrap */
+.vs-cp-item__main {
+  flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+@media screen and (min-width: 750px) {
+  .vs-cp-item__main {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.4rem;
+  }
+}
+
+.vs-cp-item__info {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Controls row: quantity, line total, remove */
+.vs-cp-item__controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex: 0 0 auto;
 }
 
 .vs-cp-item__vendor {
@@ -2166,7 +2183,7 @@ cart-items.is-empty .vs-cp__continue {
 
 /* Quantity stepper */
 .vs-cp-item__qty {
-  grid-area: qty;
+  flex: 0 0 auto;
 }
 
 .vs-cp-qty {
@@ -2223,10 +2240,12 @@ cart-items.is-empty .vs-cp__continue {
 
 /* Line total */
 .vs-cp-item__total {
-  grid-area: total;
+  flex: 0 0 auto;
   position: relative;
   text-align: right;
   white-space: nowrap;
+  min-width: 7rem;
+  margin-left: auto;
 }
 
 .vs-cp-item__total-now {
@@ -2251,8 +2270,7 @@ cart-items.is-empty .vs-cp__continue {
 
 /* Remove */
 .vs-cp-item__remove {
-  grid-area: remove;
-  justify-self: end;
+  flex: 0 0 auto;
 }
 
 .vs-cp-item__remove.hidden {
