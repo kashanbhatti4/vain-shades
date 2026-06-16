@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "vs-collection-grid": {
       "type": "vs-collection-grid",
       "settings": {
-        "products_per_page": 16,
+        "products_per_page": 48,
         "columns_desktop": 4,
         "show_secondary_image": true,
         "enable_filtering": true,
@@ -12,5 +21,7 @@
       }
     }
   },
-  "order": ["vs-collection-grid"]
+  "order": [
+    "vs-collection-grid"
+  ]
 }
