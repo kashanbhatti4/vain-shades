@@ -4033,33 +4033,44 @@ a.vs-collection__page-num:hover {
 }
 
 .vs-product__gallery {
-  display: grid;
-  grid-template-columns: 9rem 1fr;
-  gap: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
   position: sticky;
   top: 12rem;
 }
 
+/* Main image — square */
+.vs-product__main-image {
+  position: relative;
+  background: #f5f4f1;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Thumbnail strip — horizontal row below main image */
 .vs-product__thumbs {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-height: 70vh;
-  overflow-y: auto;
+  flex-direction: row;
+  gap: 0.8rem;
+  overflow-x: auto;
   scrollbar-width: none;
 }
 .vs-product__thumbs::-webkit-scrollbar { display: none; }
 .vs-product__thumb {
-  width: 8rem; height: 8rem; border: 2px solid transparent;
-  overflow: hidden; background: none; padding: 0; cursor: pointer;
-  flex-shrink: 0; transition: border-color 0.2s ease;
+  width: 7.2rem;
+  height: 7.2rem;
+  flex-shrink: 0;
+  border: 2px solid transparent;
+  overflow: hidden;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
 }
 .vs-product__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .vs-product__thumb.is-active, .vs-product__thumb:hover { border-color: var(--vs-dark); }
-
-.vs-product__main-image {
-  position: relative; background: #f5f4f1; aspect-ratio: 3 / 4; overflow: hidden;
-}
 .vs-product__slide {
   position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
 }
@@ -4203,13 +4214,10 @@ a.vs-collection__page-num:hover {
 
 @media (max-width: 989px) {
   .vs-product__layout { grid-template-columns: 1fr; gap: 4rem; padding-top: 3rem; padding-bottom: 5rem; }
-  .vs-product__gallery { position: static; grid-template-columns: 7rem 1fr; gap: 1.2rem; }
+  .vs-product__gallery { position: static; }
 }
 @media (max-width: 749px) {
-  .vs-product__gallery { grid-template-columns: 1fr; }
-  .vs-product__thumbs { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: visible; order: 2; }
-  .vs-product__thumb { width: 6.4rem; height: 6.4rem; }
-  .vs-product__main-image { order: 1; aspect-ratio: 4 / 5; }
+  .vs-product__thumb { width: 6rem; height: 6rem; }
   .vs-product__trust { flex-direction: column; gap: 1.6rem; }
   .vs-product__qty-row { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
   .vs-product__related { padding: 5rem 0; }
