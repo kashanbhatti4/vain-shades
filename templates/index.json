@@ -79,7 +79,7 @@
             "subtitle": "OVERSIZED LUXURY",
             "title": "Day Dreamer",
             "link_label": "Explore Style",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "col_2": {
@@ -89,7 +89,7 @@
             "subtitle": "STREET-READY EDITORIAL",
             "title": "Soho",
             "link_label": "Explore Style",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "col_3": {
@@ -99,7 +99,7 @@
             "subtitle": "CAT-EYE REIMAGINED",
             "title": "Super Cats",
             "link_label": "Explore Style",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
