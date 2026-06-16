@@ -22,7 +22,7 @@
         "subtext": {
           "type": "text",
           "settings": {
-            "text": "Statement sunglasses. Bold. Glamorous. Fashion-forward.",
+            "text": "Statement sunglasses. Bold. Glamorous. Fashion-forward. Designed to make you stand out, not fit in.",
             "text_style": "body"
           }
         },
@@ -32,8 +32,8 @@
             "button_label_1": "Shop Now",
             "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": false,
-            "button_label_2": "Our Story",
-            "button_link_2": "shopify://pages/about-us",
+            "button_label_2": "",
+            "button_link_2": "",
             "button_style_secondary_2": true
           }
         }
@@ -106,31 +106,19 @@
         "body": {
           "type": "text",
           "settings": {
-            "text": "<p>Exclusive luxury eyewear for those who live boldly. Available online and in select Villain retail locations across Atlanta, Georgia.</p>"
-          }
-        },
-        "cta": {
-          "type": "button",
-          "settings": {
-            "button_label": "Explore The Collection",
-            "button_link": "shopify://collections/all",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>Exclusive luxury eyewear for those who live boldly and refuse to blend in. Designed with zero compromises on craftsmanship and style, our statement frames are a testament to individuality. Available online and exclusively in select Villain retail locations across Atlanta, Georgia. Discover the collection that redefines contemporary luxury eyewear.</p>"
           }
         }
       },
       "block_order": [
         "caption",
         "heading",
-        "body",
-        "cta"
+        "body"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
+        "desktop_content_position": "right",
+        "content_alignment": "right",
+        "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 100,
         "padding_bottom": 100

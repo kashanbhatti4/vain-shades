@@ -1863,3 +1863,218 @@ nav[aria-label="breadcrumbs"] a:hover {
 @media (min-width: 750px) {
   .vs-hide-desktop { display: none !important; }
 }
+
+/* ============================================================
+   BRAND STATEMENT (ATLANTA, GA) SECTION OVERRIDES
+   ============================================================ */
+[id*="__brand_statement"] {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+[id*="__brand_statement"] .rich-text {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+[id*="__brand_statement"] .rich-text__blocks {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* ============================================================
+   FEATURED PRODUCTS (COLLECTION) SECTION OVERRIDES
+   ============================================================ */
+.featured-collection {
+  background-color: #f5f5f5 !important;
+  padding: 10rem 0 !important;
+}
+
+.featured-collection .title-wrapper-with-link {
+  margin-bottom: 6rem !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.featured-collection .title {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  font-size: 3.6rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  color: var(--vs-heading) !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.featured-collection .card-wrapper {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease !important;
+  background-color: transparent !important;
+}
+
+.featured-collection .card-wrapper:hover {
+  transform: translateY(-8px) !important;
+}
+
+.featured-collection .card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.featured-collection .card__inner {
+  background-color: #eaeaea !important;
+  border: none !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+.featured-collection .card__media img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.featured-collection .card__content {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.featured-collection .card__heading {
+  text-align: center !important;
+  margin-top: 2rem !important;
+}
+
+.featured-collection .card__heading a {
+  font-family: var(--font-lato) !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: var(--vs-heading) !important;
+}
+
+.featured-collection .price {
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--vs-body) !important;
+  margin-top: 0.6rem !important;
+}
+
+/* Hover Quick Add Overlay */
+.featured-collection .card-wrapper .quick-add {
+  position: absolute !important;
+  bottom: 2rem !important;
+  left: 2rem !important;
+  right: 2rem !important;
+  z-index: 3 !important;
+  opacity: 0 !important;
+  transform: translateY(12px) !important;
+  transition: opacity 0.35s ease, transform 0.35s ease !important;
+}
+
+.featured-collection .card-wrapper:hover .quick-add {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.featured-collection .quick-add__submit {
+  background-color: var(--vs-dark) !important;
+  color: var(--vs-white) !important;
+  border: 1px solid var(--vs-dark) !important;
+  border-radius: 0 !important;
+  padding: 1.4rem 2rem !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  width: 100% !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.featured-collection .quick-add__submit:hover {
+  background-color: var(--vs-accent) !important;
+  border-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+}
+
+@media screen and (max-width: 749px) {
+  .featured-collection {
+    padding: 6rem 0 !important;
+  }
+  
+  .featured-collection .title {
+    font-size: 2.8rem !important;
+  }
+
+  .featured-collection .card-wrapper .quick-add {
+    position: static !important;
+    opacity: 1 !important;
+    transform: none !important;
+    margin-top: 1rem !important;
+    padding: 0 !important;
+  }
+  
+  .featured-collection .quick-add__submit {
+    padding: 1rem !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Clean Badge Styling */
+.featured-collection .card__badge {
+  position: absolute !important;
+  top: 1.5rem !important;
+  left: 1.5rem !important;
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+
+.featured-collection .card__badge .badge {
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0.4rem 1rem !important;
+  font-family: var(--font-lato) !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.featured-collection .badge--onsale {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+}
+
+.featured-collection .badge--soldout {
+  background-color: var(--vs-dark) !important;
+  color: var(--vs-white) !important;
+}
+
+/* Elegant View All Button */
+.featured-collection .collection__view-all {
+  margin-top: 6rem !important;
+  text-align: center !important;
+}
+
+.featured-collection .collection__view-all a {
+  border-radius: 0 !important;
+  border: 1px solid var(--vs-dark) !important;
+  background-color: transparent !important;
+  color: var(--vs-dark) !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 600 !important;
+  font-size: 1.2rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  padding: 1.6rem 4.5rem !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+}
+
+.featured-collection .collection__view-all a:hover {
+  background-color: var(--vs-dark) !important;
+  color: var(--vs-white) !important;
+  border-color: var(--vs-dark) !important;
+}
