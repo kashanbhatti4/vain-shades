@@ -35,7 +35,7 @@
         "cta"
       ],
       "settings": {
-        "image_overlay_opacity": 45,
+        "image_overlay_opacity": 40,
         "image_height": "large",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
@@ -273,7 +273,7 @@
       }
     },
     "newsletter": {
-      "type": "email-signup-banner",
+      "type": "newsletter",
       "blocks": {
         "heading": {
           "type": "heading",
@@ -285,8 +285,7 @@
         "body": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be first to see new drops, exclusive offers, and editorial lookbooks.</p>",
-            "text_style": "body"
+            "text": "<p>Be first to see new drops, exclusive offers, and editorial lookbooks.</p>"
           }
         },
         "form": {
@@ -300,10 +299,9 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "image_height": "adapt-image",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "mobile_content_alignment": "center"
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     }
   },
