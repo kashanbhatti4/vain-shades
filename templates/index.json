@@ -75,7 +75,7 @@
         "col_1": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/herobg-m.jpg",
+            "image": "shopify://shop_images/daydreamer.jpg",
             "subtitle": "OVERSIZED LUXURY",
             "title": "Day Dreamer",
             "link_label": "Explore Style",
@@ -85,7 +85,7 @@
         "col_2": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/herobg-m.jpg",
+            "image": "shopify://shop_images/sohoo.jpg",
             "subtitle": "STREET-READY EDITORIAL",
             "title": "Soho",
             "link_label": "Explore Style",
@@ -95,7 +95,7 @@
         "col_3": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/herobg-m.jpg",
+            "image": "shopify://shop_images/supercats.jpg",
             "subtitle": "CAT-EYE REIMAGINED",
             "title": "Super Cats",
             "link_label": "Explore Style",
@@ -157,7 +157,7 @@
         "spec_3"
       ],
       "settings": {
-        "image": "shopify://shop_images/herobg2.jpg",
+        "image": "shopify://shop_images/home-img1.jpg",
         "image_position": "left",
         "eyebrow": "HANDCRAFTED EXCELLENCE",
         "title": "Atlanta Crafted. Italian Engineered.",
@@ -219,7 +219,14 @@
           }
         }
       },
-      "block_order": ["feat_1", "feat_2", "feat_3", "feat_4", "feat_5", "feat_6"],
+      "block_order": [
+        "feat_1",
+        "feat_2",
+        "feat_3",
+        "feat_4",
+        "feat_5",
+        "feat_6"
+      ],
       "settings": {
         "eyebrow": "THE VAIN DIFFERENCE",
         "title": "Why Vain Shades?",
