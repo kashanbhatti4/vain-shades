@@ -13,7 +13,6 @@
       "type": "vs-hero",
       "settings": {
         "image": "shopify://shop_images/herobg2.jpg",
-        "image_mobile": "",
         "heading": "See the World Differently.",
         "subtext": "<p>Statement sunglasses. Bold. Glamorous. Fashion-forward. Designed to make you stand out, not fit in.</p>",
         "button_label": "Shop Now",
@@ -76,22 +75,31 @@
         "col_1": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/herobg-m.jpg",
+            "subtitle": "OVERSIZED LUXURY",
             "title": "Day Dreamer",
-            "subtitle": "OVERSIZED LUXURY"
+            "link_label": "Explore Style",
+            "link": ""
           }
         },
         "col_2": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/herobg-m.jpg",
+            "subtitle": "STREET-READY EDITORIAL",
             "title": "Soho",
-            "subtitle": "STREET-READY EDITORIAL"
+            "link_label": "Explore Style",
+            "link": ""
           }
         },
         "col_3": {
           "type": "column",
           "settings": {
+            "image": "shopify://shop_images/herobg-m.jpg",
+            "subtitle": "CAT-EYE REIMAGINED",
             "title": "Super Cats",
-            "subtitle": "CAT-EYE REIMAGINED"
+            "link_label": "Explore Style",
+            "link": ""
           }
         }
       },
