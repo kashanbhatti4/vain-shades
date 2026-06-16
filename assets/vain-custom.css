@@ -529,8 +529,10 @@ p {
     font-size: 3.6rem !important;
   }
 
-  .vs-hero__text {
+  .vs-hero__text,
+  .vs-hero__text p {
     font-size: 1.5rem !important;
+    color: #bababa !important;
   }
 }
 
@@ -3972,6 +3974,10 @@ nav[aria-label="breadcrumbs"] a:hover {
   }
   .vs-about-hero__content {
     padding: 4rem 2.4rem !important;
+  }
+  .vs-about-hero__text,
+  .vs-about-hero__text p {
+    color: #bababa !important;
   }
 }
 
