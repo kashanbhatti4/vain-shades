@@ -241,22 +241,39 @@
 </div>
 
 <script>
-  // Auto-submit form on sort change
-  document.addEventListener('DOMContentLoaded', function () {
-    var sortSelect = document.getElementById('SortBy');
-    if (sortSelect) {
-      sortSelect.addEventListener('change', function () {
-        document.getElementById('vs-collection-form').submit();
-      });
+  // Build the collection URL from the sort + checked filters and navigate.
+  // Delegated change listener so it works regardless of load timing, and
+  // direct navigation avoids the fragile form-association / duplicate
+  // sort_by problems that stopped filtering/sorting from applying.
+  (function () {
+    var baseUrl = {{ collection.url | json }};
+
+    function applyFiltersAndSort() {
+      var params = new URLSearchParams();
+
+      var sortSelect = document.getElementById('SortBy');
+      if (sortSelect && sortSelect.value) {
+        params.set('sort_by', sortSelect.value);
+      }
+
+      document
+        .querySelectorAll('.vs-collection__filter-option input[type="checkbox"]:checked')
+        .forEach(function (cb) {
+          if (cb.name) params.append(cb.name, cb.value);
+        });
+
+      var query = params.toString();
+      window.location.href = query ? baseUrl + '?' + query : baseUrl;
     }
-    // Auto-submit on filter checkbox change
-    var checkboxes = document.querySelectorAll('#vs-collection-form input[type="checkbox"], form[id="vs-collection-form"] ~ * input[type="checkbox"]');
-    document.querySelectorAll('.vs-collection__filter-option input[type="checkbox"]').forEach(function(cb){
-      cb.addEventListener('change', function(){
-        document.getElementById('vs-collection-form').submit();
-      });
+
+    document.addEventListener('change', function (event) {
+      var t = event.target;
+      if (!t || !t.matches) return;
+      if (t.id === 'SortBy' || t.matches('.vs-collection__filter-option input[type="checkbox"]')) {
+        applyFiltersAndSort();
+      }
     });
-  });
+  })();
 </script>
 
 {% schema %}
