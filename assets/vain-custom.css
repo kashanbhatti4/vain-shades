@@ -1,0 +1,1773 @@
+/* ============================================================
+   VAIN SHADES — Custom Brand CSS
+   Bold & Editorial. Atlanta Luxury Eyewear.
+   ============================================================ */
+
+/* ── Google Fonts: Lato ─────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+/* ── Momo Signature @font-face ───────────────────────────── */
+@font-face {
+  font-family: 'Momo Signature';
+  src: url('MomoSignature-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --vs-bg:        #E9EEF3;
+  --vs-heading:   #0C1A2B;
+  --vs-body:      #475465;
+  --vs-accent:    #BC3F19;
+  --vs-white:     #FFFFFF;
+  --vs-surface:   #D8DFE8;
+  --vs-dark:      #0C1A2B;
+  --vs-accent-hover: #9e3514;
+
+  /* Typography */
+  --font-momo:    'Momo Signature', cursive;
+  --font-lato:    'Lato', sans-serif;
+
+  /* Spacing */
+  --section-gap:  7rem;
+  --section-gap-sm: 4rem;
+
+  /* Transitions */
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   GLOBAL RESETS & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--vs-bg);
+  color: var(--vs-body);
+  font-family: var(--font-lato);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Dawn background variables */
+.color-scheme-1,
+.color-background-1 {
+  background-color: var(--vs-bg) !important;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+/* ============================================================
+   TYPOGRAPHY SCALE
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-lato);
+  color: var(--vs-heading);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(3.6rem, 8vw, 7.2rem); font-weight: 300; }
+h2 { font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 300; }
+h3 { font-size: clamp(2rem, 3.5vw, 3rem);   font-weight: 700; }
+h4 { font-size: 2rem;  font-weight: 700; }
+h5 { font-size: 1.6rem; font-weight: 700; }
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--vs-body);
+}
+
+.vs-momo {
+  font-family: var(--font-momo);
+  font-weight: normal;
+  color: var(--vs-accent);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.vs-btn,
+.vs-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.4rem 3.2rem;
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vs-white);
+  background-color: var(--vs-accent);
+  border: 2px solid var(--vs-accent);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.vs-btn:hover,
+.vs-btn-primary:hover {
+  background-color: var(--vs-accent-hover);
+  border-color: var(--vs-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(188, 63, 25, 0.35);
+}
+
+.vs-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.4rem 3.2rem;
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vs-heading);
+  background-color: transparent;
+  border: 2px solid var(--vs-heading);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base);
+  text-decoration: none;
+}
+
+.vs-btn-outline:hover {
+  background-color: var(--vs-heading);
+  color: var(--vs-white);
+  transform: translateY(-2px);
+}
+
+.vs-btn-white {
+  color: var(--vs-heading);
+  background-color: var(--vs-white);
+  border-color: var(--vs-white);
+}
+
+.vs-btn-white:hover {
+  background-color: var(--vs-surface);
+  border-color: var(--vs-surface);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   SECTION UTILITY
+   ============================================================ */
+.vs-section {
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-section {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .vs-section {
+    padding: var(--section-gap) 8rem;
+  }
+}
+
+.vs-container {
+  max-width: 136rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.vs-section-label {
+  font-family: var(--font-lato);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+  margin-bottom: 1.6rem;
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   ============================================================ */
+.vs-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.vs-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vs-reveal-delay-1 { transition-delay: 0.1s; }
+.vs-reveal-delay-2 { transition-delay: 0.2s; }
+.vs-reveal-delay-3 { transition-delay: 0.3s; }
+.vs-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.section-header,
+.shopify-section-group-header-group {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header {
+  background-color: var(--vs-white);
+  border-bottom: 1px solid var(--vs-surface);
+  transition: box-shadow var(--transition-base);
+}
+
+.header.is-scrolled {
+  box-shadow: 0 2px 20px rgba(12, 26, 43, 0.08);
+}
+
+.header__heading-link,
+.header__heading a {
+  display: flex;
+  align-items: center;
+}
+
+.header__heading-logo {
+  height: 4.4rem;
+  width: auto;
+  max-width: 18rem;
+  object-fit: contain;
+}
+
+/* Nav links */
+.header__menu-item,
+.header__active-menu-item {
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vs-heading);
+  transition: color var(--transition-base);
+  position: relative;
+}
+
+.header__menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--vs-accent);
+  transition: width var(--transition-base);
+}
+
+.header__menu-item:hover::after,
+.header__active-menu-item::after {
+  width: 100%;
+}
+
+.header__menu-item:hover,
+.header__active-menu-item {
+  color: var(--vs-accent);
+}
+
+/* Cart icon */
+.header__icon--cart svg,
+.cart-count-bubble {
+  color: var(--vs-heading);
+}
+
+.cart-count-bubble {
+  background-color: var(--vs-accent);
+  color: var(--vs-white);
+  font-family: var(--font-lato);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   HOME PAGE — HERO BANNER
+   ============================================================ */
+.vs-hero {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: var(--vs-heading);
+}
+
+.vs-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.vs-hero__media img,
+.vs-hero__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.vs-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(12, 26, 43, 0.85) 0%,
+    rgba(12, 26, 43, 0.45) 60%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.vs-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 2rem;
+  max-width: 70rem;
+}
+
+@media (min-width: 750px) {
+  .vs-hero__content {
+    padding: 8rem 6rem;
+  }
+}
+
+.vs-hero__eyebrow {
+  font-family: var(--font-lato);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+  margin-bottom: 2rem;
+}
+
+.vs-hero__title {
+  font-family: var(--font-lato);
+  font-size: clamp(4rem, 9vw, 8.4rem);
+  font-weight: 300;
+  color: var(--vs-white);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 2.4rem;
+}
+
+.vs-hero__title strong {
+  font-weight: 700;
+  display: block;
+}
+
+.vs-hero__subtitle {
+  font-size: 1.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3.6rem;
+  max-width: 50rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.vs-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  align-items: center;
+}
+
+/* Override Dawn image-banner section */
+.shopify-section .banner {
+  min-height: 85vh;
+}
+
+.banner__content {
+  z-index: 2;
+}
+
+.banner__heading {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-white) !important;
+  letter-spacing: -0.03em !important;
+}
+
+.banner__text {
+  color: rgba(255,255,255,0.85) !important;
+  font-weight: 300 !important;
+}
+
+/* ============================================================
+   HOME PAGE — FEATURED PRODUCTS
+   ============================================================ */
+.vs-featured {
+  background-color: var(--vs-bg);
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-featured {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+.vs-featured__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.vs-featured__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+@media (min-width: 600px) {
+  .vs-featured__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .vs-featured__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Dawn featured-collection overrides */
+.featured-collection .collection__view-all {
+  background-color: transparent;
+  border: 2px solid var(--vs-heading);
+  color: var(--vs-heading);
+  font-family: var(--font-lato);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all var(--transition-base);
+  padding: 1.4rem 3.2rem;
+  font-size: 1.3rem;
+}
+
+.featured-collection .collection__view-all:hover {
+  background-color: var(--vs-heading);
+  color: var(--vs-white);
+}
+
+.section-featured-collection-default h2,
+.featured-collection h2 {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+}
+
+/* ============================================================
+   HOME PAGE — BRAND STATEMENT
+   ============================================================ */
+.vs-statement {
+  background-color: var(--vs-heading);
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-statement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--vs-accent);
+}
+
+.vs-statement::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--vs-accent);
+}
+
+@media (min-width: 750px) {
+  .vs-statement {
+    padding: 10rem 6rem;
+  }
+}
+
+.vs-statement__momo {
+  font-family: var(--font-momo);
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  color: var(--vs-accent);
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.vs-statement__headline {
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  font-weight: 300;
+  color: var(--vs-white);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  max-width: 90rem;
+  margin: 0 auto 3rem;
+}
+
+.vs-statement__headline em {
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+}
+
+.vs-statement__sub {
+  font-size: 1.6rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+/* Dawn rich-text overrides for statement */
+.rich-text__blocks {
+  color: var(--vs-white);
+}
+
+/* ============================================================
+   HOME PAGE — COLLECTION SHOWCASE
+   ============================================================ */
+.vs-showcase {
+  background-color: var(--vs-surface);
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-showcase {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+.vs-showcase__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.vs-showcase__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+}
+
+@media (min-width: 600px) {
+  .vs-showcase__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .vs-showcase__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.vs-showcase__card {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: var(--vs-heading);
+}
+
+.vs-showcase__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12,26,43,0.85) 0%, transparent 60%);
+  z-index: 1;
+  transition: opacity var(--transition-base);
+}
+
+.vs-showcase__card:hover::after {
+  opacity: 0.9;
+}
+
+.vs-showcase__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vs-showcase__card:hover img {
+  transform: scale(1.06);
+}
+
+.vs-showcase__card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.4rem;
+  z-index: 2;
+}
+
+.vs-showcase__card-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+  margin-bottom: 0.8rem;
+}
+
+.vs-showcase__card-title {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--vs-white);
+  margin-bottom: 1.6rem;
+  line-height: 1.1;
+}
+
+.vs-showcase__card-link {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vs-white);
+  border-bottom: 1px solid var(--vs-accent);
+  padding-bottom: 2px;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.vs-showcase__card-link:hover {
+  color: var(--vs-accent);
+}
+
+/* Dawn collection-list overrides */
+.collection-list-wrapper .title-wrapper {
+  text-align: center;
+}
+
+.card-collection__info {
+  background-color: transparent;
+}
+
+/* ============================================================
+   HOME PAGE — ABOUT TEASER
+   ============================================================ */
+.vs-about-teaser {
+  background-color: var(--vs-bg);
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-about-teaser {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+.vs-about-teaser__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 136rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+  .vs-about-teaser__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vs-about-teaser__image {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.vs-about-teaser__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vs-about-teaser__image:hover img {
+  transform: scale(1.04);
+}
+
+.vs-about-teaser__content {
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .vs-about-teaser__content {
+    padding: 0 4rem;
+  }
+}
+
+.vs-about-teaser__momo {
+  font-family: var(--font-momo);
+  font-size: 3rem;
+  color: var(--vs-accent);
+  margin-bottom: 1.6rem;
+  display: block;
+}
+
+.vs-about-teaser__title {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 300;
+  color: var(--vs-heading);
+  margin-bottom: 2rem;
+}
+
+.vs-about-teaser__text {
+  margin-bottom: 3.2rem;
+  font-size: 1.7rem;
+  color: var(--vs-body);
+  line-height: 1.75;
+}
+
+/* Dawn image-with-text overrides */
+.image-with-text__content {
+  background-color: var(--vs-bg) !important;
+}
+
+.image-with-text__heading {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+}
+
+/* ============================================================
+   HOME PAGE — INSTAGRAM GRID
+   ============================================================ */
+.vs-instagram {
+  background-color: var(--vs-surface);
+  padding: var(--section-gap-sm) 2rem;
+  text-align: center;
+}
+
+@media (min-width: 750px) {
+  .vs-instagram {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+.vs-instagram__header {
+  margin-bottom: 4rem;
+}
+
+.vs-instagram__handle {
+  font-size: 1.4rem;
+  color: var(--vs-body);
+  margin-top: 0.8rem;
+}
+
+.vs-instagram__handle a {
+  color: var(--vs-accent);
+  font-weight: 700;
+  transition: opacity var(--transition-base);
+}
+
+.vs-instagram__handle a:hover {
+  opacity: 0.8;
+}
+
+.vs-instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  max-width: 136rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .vs-instagram__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .vs-instagram__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.vs-instagram__cell {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: var(--vs-surface);
+  position: relative;
+}
+
+.vs-instagram__cell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(188, 63, 25, 0.0);
+  transition: background-color var(--transition-base);
+}
+
+.vs-instagram__cell:hover::after {
+  background-color: rgba(188, 63, 25, 0.25);
+}
+
+.vs-instagram__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vs-instagram__cell:hover img {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   HOME PAGE — NEWSLETTER
+   ============================================================ */
+.vs-newsletter {
+  background-color: var(--vs-heading);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+@media (min-width: 750px) {
+  .vs-newsletter {
+    padding: 8rem 4rem;
+  }
+}
+
+.vs-newsletter__momo {
+  font-family: var(--font-momo);
+  font-size: 2.8rem;
+  color: var(--vs-accent);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.vs-newsletter__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--vs-white);
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.vs-newsletter__sub {
+  font-size: 1.6rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 3.6rem;
+}
+
+.vs-newsletter__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .vs-newsletter__form {
+    flex-direction: row;
+  }
+}
+
+.vs-newsletter__input {
+  flex: 1;
+  padding: 1.4rem 2rem;
+  font-family: var(--font-lato);
+  font-size: 1.5rem;
+  color: var(--vs-heading);
+  background-color: var(--vs-white);
+  border: none;
+  outline: none;
+  transition: box-shadow var(--transition-base);
+}
+
+.vs-newsletter__input::placeholder {
+  color: rgba(71, 84, 101, 0.7);
+}
+
+.vs-newsletter__input:focus {
+  box-shadow: 0 0 0 3px var(--vs-accent);
+}
+
+/* Dawn email-signup-banner overrides */
+.email-signup-banner {
+  background-color: var(--vs-heading) !important;
+}
+
+.email-signup-banner .section-full-width {
+  background-color: var(--vs-heading);
+}
+
+.email-signup-banner h2 {
+  color: var(--vs-white) !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+}
+
+.email-signup-banner .field__input {
+  background-color: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+  color: var(--vs-white) !important;
+}
+
+.email-signup-banner .field__input::placeholder {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.email-signup-banner .button {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+  border-color: var(--vs-accent) !important;
+}
+
+/* ============================================================
+   PRODUCT CARDS (Global)
+   ============================================================ */
+.card-wrapper {
+  position: relative;
+  transition: transform var(--transition-base);
+}
+
+.card-wrapper:hover {
+  transform: translateY(-4px);
+}
+
+.card__heading a,
+.card__heading {
+  font-family: var(--font-lato) !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: var(--vs-heading) !important;
+  letter-spacing: 0.02em !important;
+  transition: color var(--transition-base);
+}
+
+.card__heading a:hover {
+  color: var(--vs-accent) !important;
+}
+
+.price {
+  font-family: var(--font-lato) !important;
+  font-size: 1.5rem !important;
+  color: var(--vs-body) !important;
+  font-weight: 400 !important;
+}
+
+.price--on-sale .price-item--regular {
+  color: var(--vs-body) !important;
+  opacity: 0.5;
+}
+
+.price--on-sale .price-item--sale {
+  color: var(--vs-accent) !important;
+}
+
+.card__media {
+  overflow: hidden;
+}
+
+.card__media img {
+  transition: transform var(--transition-slow) !important;
+}
+
+.card-wrapper:hover .card__media img {
+  transform: scale(1.06) !important;
+}
+
+/* Quick add button */
+.quick-add__submit,
+.product-form__submit {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+  border-color: var(--vs-accent) !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-size: 1.3rem !important;
+  transition: all var(--transition-base) !important;
+}
+
+.quick-add__submit:hover,
+.product-form__submit:hover {
+  background-color: var(--vs-accent-hover) !important;
+  border-color: var(--vs-accent-hover) !important;
+}
+
+/* ============================================================
+   VAIN PRODUCT CARD (Custom Snippet)
+   ============================================================ */
+.vain-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vs-white);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.vain-card:hover {
+  box-shadow: 0 16px 48px rgba(12, 26, 43, 0.12);
+  transform: translateY(-4px);
+}
+
+.vain-card__media {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: var(--vs-surface);
+}
+
+.vain-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vain-card:hover .vain-card__media img {
+  transform: scale(1.06);
+}
+
+.vain-card__badge {
+  position: absolute;
+  top: 1.6rem;
+  left: 1.6rem;
+  padding: 0.4rem 1rem;
+  background-color: var(--vs-accent);
+  color: var(--vs-white);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.vain-card__info {
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.vain-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+  transition: color var(--transition-base);
+}
+
+.vain-card:hover .vain-card__title {
+  color: var(--vs-accent);
+}
+
+.vain-card__price {
+  font-size: 1.5rem;
+  color: var(--vs-body);
+}
+
+.vain-card__price--sale {
+  color: var(--vs-accent);
+  font-weight: 700;
+}
+
+.vain-card__quick-add {
+  margin-top: auto;
+  padding: 1.2rem;
+  width: 100%;
+  background-color: var(--vs-heading);
+  color: var(--vs-white);
+  font-family: var(--font-lato);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity var(--transition-base), transform var(--transition-base), background-color var(--transition-base);
+}
+
+.vain-card:hover .vain-card__quick-add {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vain-card__quick-add:hover {
+  background-color: var(--vs-accent);
+}
+
+/* ============================================================
+   COLLECTION / SHOP PAGE
+   ============================================================ */
+.template-collection .main-page-title,
+.main-collection-banner__title,
+.section-collection-banner-default h1 {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  font-size: clamp(3rem, 6vw, 5.6rem) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.facets-container {
+  font-family: var(--font-lato);
+}
+
+.facets__summary {
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vs-heading);
+}
+
+.facets-horizontal {
+  border-top: 1px solid var(--vs-surface);
+  border-bottom: 1px solid var(--vs-surface);
+}
+
+/* Sort select */
+.facet-filters__sort .select__select {
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+  border: 1px solid var(--vs-surface);
+}
+
+/* ============================================================
+   PRODUCT PAGE
+   ============================================================ */
+.product__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(2.4rem, 4vw, 3.6rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.product__price .price-item,
+.product__price .price {
+  font-size: 2.4rem !important;
+  color: var(--vs-heading) !important;
+  font-weight: 400 !important;
+}
+
+.product-form__submit {
+  min-height: 5.6rem !important;
+  width: 100% !important;
+  font-size: 1.4rem !important;
+}
+
+.product-media-container .product__media img {
+  transition: transform var(--transition-slow) !important;
+}
+
+.product-media-container .product__media:hover img {
+  transform: scale(1.03) !important;
+}
+
+/* Variant pills */
+.variant-pills__input:checked + .variant-pills__label,
+.variant-pills__label:hover {
+  border-color: var(--vs-accent) !important;
+  color: var(--vs-accent) !important;
+}
+
+/* Product description */
+.product__description {
+  font-family: var(--font-lato) !important;
+  color: var(--vs-body) !important;
+  font-size: 1.6rem !important;
+  line-height: 1.75 !important;
+}
+
+/* ============================================================
+   ABOUT PAGE
+   ============================================================ */
+/* Section 1: Brand Story */
+.vs-about-story {
+  background-color: var(--vs-bg);
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-about-story {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+/* Section 3: Editorial Photo */
+.vs-about-editorial {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.vs-about-editorial img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Section 4: Testimonials */
+.vs-testimonials {
+  background-color: var(--vs-surface);
+  padding: var(--section-gap-sm) 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-testimonials {
+    padding: var(--section-gap) 4rem;
+  }
+}
+
+.vs-testimonials__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  max-width: 136rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 750px) {
+  .vs-testimonials__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.vs-testimonial-card {
+  background-color: var(--vs-white);
+  padding: 3.2rem;
+  position: relative;
+}
+
+.vs-testimonial-card::before {
+  content: '\201C';
+  font-family: var(--font-momo);
+  font-size: 6rem;
+  color: var(--vs-accent);
+  position: absolute;
+  top: 1.6rem;
+  left: 2.4rem;
+  line-height: 1;
+}
+
+.vs-testimonial-card__text {
+  font-size: 1.6rem;
+  color: var(--vs-body);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding-top: 3.2rem;
+}
+
+.vs-testimonial-card__author {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vs-heading);
+}
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+.template-page .contact-form__title,
+.contact form h2 {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+}
+
+.contact .field__input,
+.contact .field__label {
+  font-family: var(--font-lato) !important;
+  font-size: 1.5rem !important;
+}
+
+.contact .field__input {
+  border-color: var(--vs-surface) !important;
+  background-color: var(--vs-white) !important;
+  color: var(--vs-heading) !important;
+  border-radius: 0 !important;
+}
+
+.contact .field__input:focus {
+  border-color: var(--vs-accent) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px var(--vs-accent) !important;
+}
+
+.contact .field__label {
+  color: var(--vs-body) !important;
+}
+
+.contact .button {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+  border: none !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  font-size: 1.3rem !important;
+  padding: 1.6rem 3.6rem !important;
+  transition: background-color var(--transition-base) !important;
+}
+
+.contact .button:hover {
+  background-color: var(--vs-accent-hover) !important;
+}
+
+.section-contact-form-default {
+  background-color: var(--vs-bg);
+}
+
+/* ============================================================
+   CART DRAWER
+   ============================================================ */
+cart-drawer,
+.cart-drawer {
+  font-family: var(--font-lato) !important;
+}
+
+.cart-drawer__header {
+  border-bottom: 1px solid var(--vs-surface) !important;
+  background-color: var(--vs-white) !important;
+}
+
+.cart-drawer__heading {
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--vs-heading) !important;
+}
+
+.cart-drawer__footer {
+  background-color: var(--vs-white) !important;
+  border-top: 1px solid var(--vs-surface) !important;
+}
+
+.cart-drawer__footer .cart__checkout-button,
+.cart-drawer .button {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+  border: none !important;
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-size: 1.4rem !important;
+  width: 100% !important;
+  padding: 1.8rem !important;
+  transition: background-color var(--transition-base) !important;
+}
+
+.cart-drawer__footer .cart__checkout-button:hover,
+.cart-drawer .button:hover {
+  background-color: var(--vs-accent-hover) !important;
+}
+
+.totals__subtotal-value {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--vs-heading) !important;
+}
+
+/* Cart item */
+.cart-item__name {
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  color: var(--vs-heading) !important;
+}
+
+.cart-item__price {
+  color: var(--vs-body) !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.section-footer-default {
+  background-color: var(--vs-heading) !important;
+}
+
+.footer {
+  background-color: var(--vs-heading) !important;
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.footer__heading {
+  font-family: var(--font-lato) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--vs-white) !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.footer-block__list a,
+.footer__list-item a {
+  color: rgba(255,255,255,0.65) !important;
+  font-family: var(--font-lato) !important;
+  font-size: 1.4rem !important;
+  transition: color var(--transition-base) !important;
+}
+
+.footer-block__list a:hover,
+.footer__list-item a:hover {
+  color: var(--vs-white) !important;
+}
+
+.footer__copyright {
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+  color: rgba(255,255,255,0.4) !important;
+  font-size: 1.2rem !important;
+}
+
+/* Footer newsletter */
+.footer .field__input {
+  background-color: rgba(255,255,255,0.08) !important;
+  border-color: rgba(255,255,255,0.2) !important;
+  color: var(--vs-white) !important;
+  border-radius: 0 !important;
+}
+
+.footer .field__input::placeholder {
+  color: rgba(255,255,255,0.4) !important;
+}
+
+.footer .field__label {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+.footer .button {
+  background-color: var(--vs-accent) !important;
+  border: none !important;
+  color: var(--vs-white) !important;
+}
+
+.footer .button:hover {
+  background-color: var(--vs-accent-hover) !important;
+}
+
+/* Social icons */
+.footer .list-social__link svg {
+  fill: rgba(255,255,255,0.65);
+  transition: fill var(--transition-base);
+}
+
+.footer .list-social__link:hover svg {
+  fill: var(--vs-accent);
+}
+
+/* Footer logo */
+.footer__logo img {
+  max-height: 5rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+/* ============================================================
+   404 PAGE
+   ============================================================ */
+.main-404 {
+  text-align: center;
+  padding: 10rem 2rem;
+  background-color: var(--vs-bg);
+}
+
+.main-404 .page-title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(6rem, 15vw, 14rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.main-404 p {
+  font-size: 1.8rem;
+  color: var(--vs-body);
+  margin: 2rem 0 3.6rem;
+}
+
+/* ============================================================
+   GLOBAL FORM INPUTS
+   ============================================================ */
+.field__input,
+.select__select,
+textarea {
+  font-family: var(--font-lato) !important;
+  border-radius: 0 !important;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base) !important;
+}
+
+.field__input:focus,
+textarea:focus {
+  border-color: var(--vs-accent) !important;
+  box-shadow: 0 0 0 1px var(--vs-accent) !important;
+  outline: none !important;
+}
+
+/* ============================================================
+   MOBILE MENU DRAWER
+   ============================================================ */
+.menu-drawer {
+  background-color: var(--vs-white) !important;
+}
+
+.menu-drawer__navigation-item > a,
+.menu-drawer__menu-item {
+  font-family: var(--font-lato) !important;
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: var(--vs-heading) !important;
+  transition: color var(--transition-base) !important;
+}
+
+.menu-drawer__navigation-item > a:hover,
+.menu-drawer__menu-item:hover {
+  color: var(--vs-accent) !important;
+}
+
+/* ============================================================
+   ANNOUNCEMENT BAR
+   ============================================================ */
+.section-announcement-bar-default .announcement-bar {
+  background-color: var(--vs-heading);
+  border-bottom: none;
+}
+
+.announcement-bar__message {
+  font-family: var(--font-lato);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vs-white);
+}
+
+/* ============================================================
+   BREADCRUMBS
+   ============================================================ */
+nav[aria-label="breadcrumbs"] a,
+.breadcrumbs__item {
+  font-family: var(--font-lato) !important;
+  font-size: 1.3rem !important;
+  color: var(--vs-body) !important;
+  transition: color var(--transition-base) !important;
+}
+
+nav[aria-label="breadcrumbs"] a:hover {
+  color: var(--vs-accent) !important;
+}
+
+/* ============================================================
+   LOADING SPINNER
+   ============================================================ */
+.loading__spinner svg path {
+  stroke: var(--vs-accent) !important;
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+.search-modal__form .field__input {
+  font-family: var(--font-lato) !important;
+  font-size: 1.8rem !important;
+  color: var(--vs-heading) !important;
+}
+
+.search-modal {
+  background-color: var(--vs-bg) !important;
+}
+
+/* ============================================================
+   SECTION — PAGE (About/Contact generic)
+   ============================================================ */
+.main-page h1,
+.section-main-page .page-title {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  font-size: clamp(3rem, 6vw, 5.6rem) !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+.skip-to-content-link {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+  font-family: var(--font-lato) !important;
+}
+
+/* ============================================================
+   MULTICOLUMN (Why Us / Values section)
+   ============================================================ */
+.multicolumn .column__heading {
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  color: var(--vs-heading) !important;
+}
+
+.multicolumn .rte {
+  color: var(--vs-body) !important;
+  font-family: var(--font-lato) !important;
+}
+
+/* ============================================================
+   COLLECTION HERO BANNER
+   ============================================================ */
+.collection-hero__image {
+  filter: brightness(0.65);
+}
+
+.collection-hero__title {
+  font-family: var(--font-lato) !important;
+  font-weight: 300 !important;
+  color: var(--vs-white) !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* ============================================================
+   BADGE / SALE BADGE
+   ============================================================ */
+.badge {
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+}
+
+.badge--sale,
+.badge--on-sale {
+  background-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+}
+
+/* ============================================================
+   SLIDESHOW SECTION
+   ============================================================ */
+.slideshow__controls .slider-button {
+  background-color: rgba(255,255,255,0.15) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: var(--vs-white) !important;
+  backdrop-filter: blur(4px);
+  transition: all var(--transition-base) !important;
+}
+
+.slideshow__controls .slider-button:hover {
+  background-color: var(--vs-accent) !important;
+  border-color: var(--vs-accent) !important;
+}
+
+/* ============================================================
+   PREDICTIVE SEARCH RESULTS
+   ============================================================ */
+.predictive-search__item-heading {
+  font-family: var(--font-lato) !important;
+  font-weight: 700 !important;
+  color: var(--vs-heading) !important;
+}
+
+.predictive-search__item-price {
+  color: var(--vs-body) !important;
+  font-family: var(--font-lato) !important;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.pagination__item a,
+.pagination__item span {
+  font-family: var(--font-lato) !important;
+  font-size: 1.4rem !important;
+  color: var(--vs-heading) !important;
+  border-color: var(--vs-surface) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.pagination__item--current span,
+.pagination__item a:hover {
+  background-color: var(--vs-accent) !important;
+  border-color: var(--vs-accent) !important;
+  color: var(--vs-white) !important;
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES
+   ============================================================ */
+@media (max-width: 749px) {
+  .vs-hide-mobile { display: none !important; }
+}
+
+@media (min-width: 750px) {
+  .vs-hide-desktop { display: none !important; }
+}

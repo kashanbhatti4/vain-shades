@@ -1,0 +1,101 @@
+{%- comment -%}
+  Vain Shades — Custom Product Card Snippet
+  Usage: {% render 'vain-product-card', product: product %}
+  Accepts:
+    - product: product object (required)
+    - lazy_load: boolean (optional, default true)
+    - show_quick_add: boolean (optional, default true)
+    - aspect_ratio: string (optional, e.g. '3/4')
+{%- endcomment -%}
+
+{%- liquid
+  assign lazy_load = lazy_load | default: true
+  assign show_quick_add = show_quick_add | default: true
+  assign card_aspect_ratio = aspect_ratio | default: '3/4'
+  assign first_variant = product.selected_or_first_available_variant
+  assign product_url = product.url | within: collection
+  assign product_image = product.featured_media
+  assign second_image = product.media[1]
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign sold_out = true
+  if product.available
+    assign sold_out = false
+  endif
+-%}
+
+<div class="vain-card vs-reveal" data-product-id="{{ product.id }}">
+  {%- comment -%}── Media ─────────────────────────────────────────────{%- endcomment -%}
+  <a href="{{ product_url }}" class="vain-card__media" aria-label="{{ product.title | escape }}" tabindex="-1">
+    {%- if product_image -%}
+      {{
+        product_image
+        | image_url: width: 800
+        | image_tag:
+          loading: lazy_load,
+          alt: product_image.alt | default: product.title | escape,
+          class: 'vain-card__image',
+          width: product_image.preview_image.width,
+          height: product_image.preview_image.height
+      }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'vain-card__placeholder' }}
+    {%- endif -%}
+
+    {%- comment -%}── Badges ───────────────────────────────────────────{%- endcomment -%}
+    {%- if on_sale and sold_out == false -%}
+      <span class="vain-card__badge">Sale</span>
+    {%- elsif sold_out -%}
+      <span class="vain-card__badge" style="background-color: var(--vs-heading);">Sold Out</span>
+    {%- elsif product.tags contains 'new' or product.tags contains 'New' -%}
+      <span class="vain-card__badge">New</span>
+    {%- endif -%}
+  </a>
+
+  {%- comment -%}── Info ──────────────────────────────────────────────{%- endcomment -%}
+  <div class="vain-card__info">
+    <a href="{{ product_url }}" class="vain-card__title-link">
+      <h3 class="vain-card__title">{{ product.title }}</h3>
+    </a>
+
+    <div class="vain-card__price">
+      {%- if on_sale -%}
+        <span class="vain-card__price--sale">{{ product.price | money }}</span>
+        <span class="vain-card__price--compare" style="text-decoration: line-through; opacity: 0.5; margin-left: 0.8rem;">
+          {{ product.compare_at_price | money }}
+        </span>
+      {%- else -%}
+        <span>{{ product.price | money }}</span>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%}── Quick Add ────────────────────────────────────────{%- endcomment -%}
+    {%- if show_quick_add and sold_out == false -%}
+      {%- if product.variants.size == 1 -%}
+        <button
+          class="vain-card__quick-add"
+          data-variant-id="{{ first_variant.id }}"
+          aria-label="{{ 'products.product.add_to_cart' | t }}: {{ product.title | escape }}"
+          id="quick-add-{{ product.id }}"
+        >
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+      {%- else -%}
+        <a
+          href="{{ product_url }}"
+          class="vain-card__quick-add"
+          aria-label="{{ 'products.product.choose_options' | t }}: {{ product.title | escape }}"
+          id="quick-add-options-{{ product.id }}"
+        >
+          {{ 'products.product.choose_options' | t }}
+        </a>
+      {%- endif -%}
+    {%- elsif sold_out -%}
+      <button class="vain-card__quick-add" disabled style="opacity: 0.5; cursor: not-allowed; transform: none !important; opacity: 1 !important;">
+        {{ 'products.product.sold_out' | t }}
+      </button>
+    {%- endif -%}
+  </div>
+</div>
