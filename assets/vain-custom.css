@@ -426,6 +426,7 @@ p {
 /* Override Dawn image-banner section */
 .shopify-section .banner {
   min-height: 85vh;
+  background-color: var(--vs-dark) !important;
 }
 
 .banner__content {
@@ -453,6 +454,11 @@ p {
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+  }
+  .banner__box {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 
