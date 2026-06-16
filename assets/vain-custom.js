@@ -199,24 +199,8 @@ const vsMarquee = {
    ============================================================ */
 const vsParallax = {
   init() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const heroes = document.querySelectorAll('.vs-hero__media img, .banner__media img');
-    if (!heroes.length) return;
-
-    const onScroll = () => {
-      const scrolled = window.scrollY;
-      heroes.forEach((img) => {
-        const parent = img.closest('.vs-hero, .banner');
-        if (!parent) return;
-        const rect = parent.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-        const offset = (rect.top * 0.3).toFixed(2);
-        img.style.transform = `translateY(${offset}px)`;
-      });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // Parallax disabled per user request to stop hero background image movement
+    return;
   },
 };
 
@@ -326,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
   vsSmoothScroll.init();
   vsNewsletter.init();
   vsMarquee.init();
-  vsParallax.init();
+  // vsParallax.init(); (Disabled to prevent background image movement)
   vsQuickAdd.init();
   vsColorScheme.init();
   vsVainCard.init();
