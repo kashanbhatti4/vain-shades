@@ -1494,16 +1494,24 @@ cart-drawer,
   background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Panel — force a clean flex column even in Dawn's empty state */
+/* Panel — force a clean flex column even in Dawn's empty state.
+   align-items:stretch overrides Dawn's empty-state align-items:center,
+   which was shrinking the dark header to its content width. */
 .cart-drawer .drawer__inner,
 cart-drawer.is-empty .drawer__inner {
   display: flex !important;
   flex-direction: column !important;
+  align-items: stretch !important;
   height: 100% !important;
   padding: 0 !important;
   border: 0 !important;
   background-color: var(--vs-white) !important;
   box-shadow: -4px 0 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* When empty, hide the (empty) items list so the message centers cleanly */
+cart-drawer.is-empty .vs-cart__items {
+  display: none !important;
 }
 
 /* ── Header ───────────────────────────────────────────────── */
@@ -2065,12 +2073,22 @@ textarea:focus {
    so nothing re-applies a background and the hero can't bleed through.
    ============================================================ */
 
+/* Lift the whole header group above the hero. Dawn gives the header
+   z-index:3, but .vs-hero__content is also z-index:3 and comes later in
+   the DOM, so it painted over the open drawer. */
+.shopify-section-group-header-group,
+.section-header.shopify-section-group-header-group,
+.section-header {
+  z-index: 50 !important;
+}
+
 /* Solid dark panel */
 .menu-drawer {
   background-color: var(--vs-dark) !important;
   background-image: none !important;
   border-top: 3px solid var(--vs-accent) !important;
   box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5) !important;
+  z-index: 5 !important;
 }
 
 .menu-drawer__inner-container {
@@ -2087,19 +2105,6 @@ textarea:focus {
   height: 100% !important;
   overflow: hidden !important;
   background-color: var(--vs-dark) !important;
-}
-
-/* Brand wordmark at the top */
-.menu-drawer__brand {
-  flex: 0 0 auto;
-  padding: 2.4rem 3rem 1.6rem;
-  font-family: var(--font-lato);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--vs-accent);
-  margin: 0;
 }
 
 .menu-drawer__navigation {

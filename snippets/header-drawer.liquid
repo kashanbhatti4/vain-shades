@@ -26,9 +26,6 @@
     <div id="menu-drawer" class="menu-drawer motion-reduce">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
-          {%- comment -%} Brand wordmark at the top of the drawer {%- endcomment -%}
-          <p class="menu-drawer__brand">{{ shop.name }}</p>
-
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
