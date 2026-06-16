@@ -1,63 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
+    "logo": "shopify://shop_images/logo.png",
     "logo_width": 120,
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#E9EEF3",
-          "background_gradient": "",
-          "text": "#475465",
-          "button": "#BC3F19",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#0C1A2B",
-          "shadow": "#0C1A2B"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#D8DFE8",
-          "background_gradient": "",
-          "text": "#475465",
-          "button": "#BC3F19",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#0C1A2B",
-          "shadow": "#0C1A2B"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#0C1A2B",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#BC3F19",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#000000"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#0C1A2B",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#FFFFFF",
-          "button_label": "#0C1A2B",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#000000"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#BC3F19",
-          "background_gradient": "",
-          "text": "#FFFFFF",
-          "button": "#0C1A2B",
-          "button_label": "#FFFFFF",
-          "secondary_button_label": "#FFFFFF",
-          "shadow": "#000000"
-        }
-      }
-    },
     "type_header_font": "lato_n3",
     "heading_scale": 100,
     "type_body_font": "lato_n4",
@@ -156,14 +109,14 @@
     "brand_headline": "Vain Shades",
     "brand_description": "<p>Exclusive luxury eyewear. Bold. Glamorous. Fashion-forward. Based in Atlanta, GA.</p>",
     "brand_image_width": 100,
-    "social_twitter_link": "",
     "social_facebook_link": "",
-    "social_pinterest_link": "",
     "social_instagram_link": "https://www.instagram.com/",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
     "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "social_twitter_link": "",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
@@ -185,6 +138,64 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "scheme-1"
+        }
+      }
+    },
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#e9eef3",
+          "background_gradient": "",
+          "text": "#475465",
+          "button": "#bc3f19",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#0c1a2b",
+          "shadow": "#0c1a2b"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#d8dfe8",
+          "background_gradient": "",
+          "text": "#475465",
+          "button": "#bc3f19",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#0c1a2b",
+          "shadow": "#0c1a2b"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#0c1a2b",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#bc3f19",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#000000"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#0c1a2b",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#0c1a2b",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#000000"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#bc3f19",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#0c1a2b",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#000000"
         }
       }
     }
