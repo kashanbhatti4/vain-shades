@@ -1,0 +1,103 @@
+<div class="vs-about-gallery">
+  <div class="page-width">
+    {%- if section.settings.title != blank or section.settings.subtext != blank -%}
+      <div class="vs-about-gallery__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="vs-about-gallery__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <p class="vs-about-gallery__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="vs-about-gallery__grid">
+      {%- for block in section.blocks -%}
+        <div class="vs-about-gallery__item" {{ block.shopify_attributes }}>
+          <div class="vs-about-gallery__image-wrapper">
+            {%- if block.settings.image != blank -%}
+              <img 
+                src="{{ block.settings.image | image_url: width: 800 }}" 
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="100%"
+                height="100%"
+                class="vs-about-gallery__image"
+              >
+            {%- else -%}
+              {{ 'lifestyle-' | append: forloop.index | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          {%- if block.settings.title != blank or block.settings.caption != blank -%}
+            <div class="vs-about-gallery__content">
+              {%- if block.settings.title != blank -%}
+                <h3 class="vs-about-gallery__item-title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.caption != blank -%}
+                <p class="vs-about-gallery__item-caption">{{ block.settings.caption }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Photo Gallery",
+  "tag": "section",
+  "class": "section-vs-about-gallery",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Inside Vain Shades",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "default": "A visual glimpse into our design philosophy and showroom details.",
+      "label": "Subtext"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Design Studio",
+          "label": "Block Title"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "default": "Atlanta, GA",
+          "label": "Block Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Photo Gallery",
+      "blocks": [
+        { "type": "image", "settings": { "title": "Precision Milling" } },
+        { "type": "image", "settings": { "title": "72H Hand Polish" } },
+        { "type": "image", "settings": { "title": "Custom Fitting" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

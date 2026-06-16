@@ -1,113 +1,46 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "about_hero": {
+      "type": "vs-about-hero",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "image": "shopify://shop_images/herobg2.jpg",
+        "image_mobile": "",
+        "eyebrow": "OUR STORY",
+        "heading": "Born to stand out.",
+        "subtext": "<p>Vain Shades designs and crafts statement luxury eyewear for the unapologetic and glamorous.</p>",
+        "image_overlay_opacity": 40
       }
     },
-    "brand_story": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Crafted in Atlanta",
-            "heading_size": "h2"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Every pair of Vain Shades tells a story of boldness and glamour, designed for those who live life in the spotlight.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
+    "about_narrative": {
+      "type": "vs-about-narrative",
       "settings": {
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "color_scheme": "scheme-1",
-        "mobile_content_alignment": "left",
-        "padding_top": 40,
-        "padding_bottom": 40
+        "eyebrow": "ESTABLISHED IN ATLANTA",
+        "quote": "Because ordinary was never an option.",
+        "body_text": "<p>Vain Shades was created for those who do not follow trends, but establish them. Our frames are conceived in Atlanta, Georgia, inspired by the city’s vibrant culture, luxury, and artistic energy. We believe that eyewear is not just an accessory—it is a statement of identity.</p><p>Every frame is handmade with zero compromises. We source our acetate from the finest eco-conscious manufacturers in Italy, polish each sheet by hand for over 72 hours, and integrate custom gold hardware hinges. The result is premium luxury comfort that stands out, not fits in.</p>"
       }
     },
-    "mission": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Our Vision",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>To create the most statement-making, high-fashion eyewear in the South. Bold. Glamorous. Unapologetic.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
-    "testimonials": {
-      "type": "multicolumn",
+    "about_gallery": {
+      "type": "vs-about-gallery",
       "blocks": {
         "col_1": {
-          "type": "column",
+          "type": "image",
           "settings": {
-            "title": "\"Pure Glamour\"",
-            "text": "<p>The oversized frames are perfect. I feel like an absolute star whenever I wear them in Midtown.</p>",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/all"
+            "title": "Precision Design",
+            "caption": "Atlanta Studio"
           }
         },
         "col_2": {
-          "type": "column",
+          "type": "image",
           "settings": {
-            "title": "\"Luxury Quality\"",
-            "text": "<p>The weight, the acetate, the lenses — everything screams high fashion. Better than designer brands.</p>",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/all"
+            "title": "72H Hand Polish",
+            "caption": "Artisanal Polish"
           }
         },
         "col_3": {
-          "type": "column",
+          "type": "image",
           "settings": {
-            "title": "\"Bold & Unique\"",
-            "text": "<p>You won't find eyewear like this anywhere else in Atlanta. Total head-turner.</p>",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/all"
+            "title": "Gold Hardware",
+            "caption": "Hinge Detail"
           }
         }
       },
@@ -117,35 +50,27 @@
         "col_3"
       ],
       "settings": {
-        "title": "Testimonials",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "title": "Inside Vain Shades",
+        "subtext": "A visual glimpse into our design philosophy and showroom details."
       }
     },
-    "store_locations": {
-      "type": "multicolumn",
+    "about_locations": {
+      "type": "vs-about-locations",
       "blocks": {
         "loc_1": {
-          "type": "column",
+          "type": "location",
           "settings": {
             "title": "Buckhead Showroom",
-            "text": "<p>3280 Peachtree Rd NE<br>Atlanta, GA 30305</p>"
+            "address": "3280 Peachtree Rd NE\nAtlanta, GA 30305",
+            "hours": "<p>Mon - Sat: 11am - 7pm<br>Sun: 12pm - 6pm</p>"
           }
         },
         "loc_2": {
-          "type": "column",
+          "type": "location",
           "settings": {
             "title": "Ponce City Market",
-            "text": "<p>675 Ponce De Leon Ave NE<br>Atlanta, GA 30308</p>"
+            "address": "675 Ponce De Leon Ave NE\nAtlanta, GA 30308",
+            "hours": "<p>Mon - Sat: 10am - 9pm<br>Sun: 11am - 8pm</p>"
           }
         }
       },
@@ -155,25 +80,14 @@
       ],
       "settings": {
         "title": "Visit Us in Atlanta",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "color_scheme": "scheme-1"
       }
     }
   },
   "order": [
-    "main",
-    "brand_story",
-    "mission",
-    "testimonials",
-    "store_locations"
+    "about_hero",
+    "about_narrative",
+    "about_gallery",
+    "about_locations"
   ]
 }

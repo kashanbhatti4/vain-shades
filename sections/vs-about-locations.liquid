@@ -1,0 +1,123 @@
+<div class="vs-about-locations color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <div class="vs-about-locations__header">
+        <span class="vs-about-locations__eyebrow vs-momo">STORES</span>
+        <h2 class="vs-about-locations__title">{{ section.settings.title }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="vs-about-locations__grid">
+      {%- for block in section.blocks -%}
+        <div class="vs-about-locations__card" {{ block.shopify_attributes }}>
+          <div class="vs-about-locations__card-content">
+            <h3 class="vs-about-locations__showroom-name">{{ block.settings.title }}</h3>
+            
+            {%- if block.settings.address != blank -%}
+              <div class="vs-about-locations__item">
+                <span class="vs-about-locations__label">ADDRESS</span>
+                <p class="vs-about-locations__value">{{ block.settings.address }}</p>
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.hours != blank -%}
+              <div class="vs-about-locations__item">
+                <span class="vs-about-locations__label">HOURS</span>
+                <div class="vs-about-locations__value rte">
+                  {{ block.settings.hours }}
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="vs-about-locations__map-link">
+                GET DIRECTIONS 
+                <span class="vs-about-locations__arrow">→</span>
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Store Locations",
+  "tag": "section",
+  "class": "section-vs-about-locations",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Visit Us in Atlanta",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" }
+      ],
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Location Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Buckhead Showroom",
+          "label": "Showroom Name"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "default": "3280 Peachtree Rd NE\nAtlanta, GA 30305",
+          "label": "Address"
+        },
+        {
+          "type": "richtext",
+          "id": "hours",
+          "default": "<p>Mon - Sat: 11am - 7pm<br>Sun: 12pm - 6pm</p>",
+          "label": "Hours"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Google Maps Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Store Locations",
+      "blocks": [
+        {
+          "type": "location",
+          "settings": {
+            "title": "Buckhead Showroom",
+            "address": "3280 Peachtree Rd NE\nAtlanta, GA 30305"
+          }
+        },
+        {
+          "type": "location",
+          "settings": {
+            "title": "Ponce City Market",
+            "address": "675 Ponce De Leon Ave NE\nAtlanta, GA 30308"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

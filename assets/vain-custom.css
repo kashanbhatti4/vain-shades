@@ -2823,3 +2823,415 @@ nav[aria-label="breadcrumbs"] a:hover {
   }
 }
 
+/* ============================================================
+   ABOUT HERO BANNER (vs-about-hero)
+   ============================================================ */
+.vs-about-hero {
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background-color: var(--vs-dark);
+  overflow: hidden;
+}
+
+.vs-about-hero__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.vs-about-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vs-about-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  z-index: 2;
+}
+
+.vs-about-hero__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 100% !important;
+}
+
+.vs-about-hero__box {
+  max-width: 65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1.6rem;
+}
+
+.vs-about-hero__eyebrow {
+  font-family: var(--font-momo);
+  font-size: 1.2rem;
+  color: var(--vs-accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.vs-about-hero__heading {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(4rem, 8vw, 7.2rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-white) !important;
+  margin: 0 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em !important;
+}
+
+.vs-about-hero__text {
+  font-family: var(--font-lato) !important;
+  font-size: 1.8rem !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 749px) {
+  .vs-about-hero {
+    min-height: 60vh;
+  }
+  .vs-about-hero__content {
+    padding: 4rem 2.4rem !important;
+  }
+}
+
+/* ============================================================
+   ABOUT BRAND NARRATIVE (vs-about-narrative)
+   ============================================================ */
+.vs-about-narrative {
+  padding: 10rem 0;
+  background-color: var(--vs-white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.vs-about-narrative__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+}
+
+@media (min-width: 750px) {
+  .vs-about-narrative__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: flex-start;
+  }
+}
+
+.vs-about-narrative__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vs-about-narrative__line {
+  width: 5rem;
+  height: 2px;
+  background-color: var(--vs-accent);
+}
+
+.vs-about-narrative__eyebrow {
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--vs-accent);
+  font-weight: 700;
+}
+
+.vs-about-narrative__quote {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(2.8rem, 4.5vw, 4.4rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.vs-about-narrative__right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.vs-about-narrative__body p {
+  font-size: 1.7rem !important;
+  line-height: 1.75 !important;
+  color: var(--vs-body) !important;
+  margin-bottom: 2rem !important;
+}
+
+.vs-about-narrative__body p:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 749px) {
+  .vs-about-narrative {
+    padding: 6rem 0;
+  }
+}
+
+/* ============================================================
+   ABOUT PHOTO GALLERY (vs-about-gallery)
+   ============================================================ */
+.vs-about-gallery {
+  padding: 10rem 0;
+  background-color: var(--vs-bg);
+}
+
+.vs-about-gallery__header {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.vs-about-gallery__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3rem, 5vw, 4.4rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading);
+  margin: 0;
+  letter-spacing: -0.02em !important;
+}
+
+.vs-about-gallery__subtext {
+  font-size: 1.7rem;
+  color: var(--vs-body);
+}
+
+.vs-about-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: rgba(18, 18, 18, 0.08); /* Intersecting lines */
+  border: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+@media (min-width: 750px) {
+  .vs-about-gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.vs-about-gallery__item {
+  background-color: var(--vs-white);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.vs-about-gallery__image-wrapper {
+  aspect-ratio: 4/5;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  margin-bottom: 2.4rem;
+}
+
+.vs-about-gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vs-about-gallery__item:hover .vs-about-gallery__image {
+  transform: scale(1.05);
+}
+
+.vs-about-gallery__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.vs-about-gallery__item-title {
+  font-family: var(--font-lato) !important;
+  font-size: 1.8rem !important;
+  font-weight: 400 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 !important;
+}
+
+.vs-about-gallery__item-caption {
+  font-family: var(--font-momo);
+  font-size: 1.1rem;
+  color: var(--vs-body);
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 749px) {
+  .vs-about-gallery {
+    padding: 6rem 0;
+  }
+  .vs-about-gallery__item {
+    padding: 2rem;
+  }
+}
+
+/* ============================================================
+   ABOUT STORE LOCATIONS (vs-about-locations)
+   ============================================================ */
+.vs-about-locations {
+  padding: 10rem 0;
+  background-color: var(--vs-white);
+}
+
+.vs-about-locations__header {
+  text-align: center;
+  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.vs-about-locations__eyebrow {
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: var(--vs-accent);
+  font-weight: 700;
+}
+
+.vs-about-locations__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3rem, 5vw, 4.4rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading);
+  margin: 0;
+  letter-spacing: -0.02em !important;
+}
+
+.vs-about-locations__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 750px) {
+  .vs-about-locations__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+  }
+}
+
+.vs-about-locations__card {
+  background-color: var(--vs-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.vs-about-locations__card:hover {
+  border-color: var(--vs-accent);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+}
+
+.vs-about-locations__showroom-name {
+  font-family: var(--font-lato) !important;
+  font-size: 2.6rem !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 0 3.2rem 0 !important;
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 1.6rem;
+}
+
+.vs-about-locations__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.vs-about-locations__label {
+  font-family: var(--font-momo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--vs-accent);
+}
+
+.vs-about-locations__value {
+  font-family: var(--font-lato);
+  font-size: 1.6rem;
+  color: var(--vs-heading);
+  line-height: 1.5;
+}
+
+.vs-about-locations__value p {
+  font-size: 1.6rem !important;
+  color: var(--vs-heading) !important;
+  line-height: 1.5 !important;
+}
+
+.vs-about-locations__map-link {
+  margin-top: 1.6rem;
+  font-family: var(--font-momo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: color var(--transition-base);
+  width: max-content;
+}
+
+.vs-about-locations__map-link:hover {
+  color: var(--vs-accent);
+}
+
+.vs-about-locations__arrow {
+  transition: transform var(--transition-base);
+}
+
+.vs-about-locations__map-link:hover .vs-about-locations__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 749px) {
+  .vs-about-locations {
+    padding: 6rem 0;
+  }
+  .vs-about-locations__card {
+    padding: 3rem;
+  }
+}
+
+

@@ -1,0 +1,76 @@
+<div class="vs-about-hero">
+  <picture class="vs-about-hero__media">
+    <source media="(max-width: 749px)" srcset="{% if section.settings.image_mobile != blank %}{{ section.settings.image_mobile | image_url: width: 750 }}{% else %}https://cdn.shopify.com/s/files/1/0779/1804/4348/files/herobg-m.jpg?v=1781624284{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <img src="{{ section.settings.image | image_url: width: 1800 }}" alt="{{ section.settings.image.alt | escape }}" loading="eager" fetchpriority="high">
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </picture>
+  <div class="vs-about-hero__overlay" style="opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};"></div>
+  <div class="vs-about-hero__content page-width">
+    <div class="vs-about-hero__box">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="vs-about-hero__eyebrow vs-momo">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="vs-about-hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <div class="vs-about-hero__text rte">{{ section.settings.subtext }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Hero Banner",
+  "tag": "section",
+  "class": "section-vs-about-hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "OUR VISION",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Vain Story.",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "default": "<p>Statement eyewear designed in Atlanta for those who live boldly and refuse to blend in.</p>",
+      "label": "Subtext"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "default": 40,
+      "label": "Overlay Opacity"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero Banner"
+    }
+  ]
+}
+{% endschema %}
