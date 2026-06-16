@@ -165,14 +165,33 @@ const vsNewsletter = {
 };
 
 /* ============================================================
-   ANNOUNCEMENT BAR — AUTO SCROLL (if multiple messages)
+   ANNOUNCEMENT BAR — LOOPING MARQUEE
    ============================================================ */
-const vsAnnouncementBar = {
+const vsMarquee = {
   init() {
-    const bar = document.querySelector('.announcement-bar__message');
-    if (!bar) return;
-    // Handled by Dawn's own slideshow if configured — no override needed
-  },
+    const container = document.querySelector('.announcement-bar') || document.querySelector('.utility-bar');
+    if (!container) return;
+
+    const messages = [
+      'SEE THE WORLD DIFFERENTLY',
+      'VAIN SHADES — STATEMENT EYEWEAR. BOLD. GLAMOROUS. UNAPOLOGETIC.',
+      'FREE EXPRESS SHIPPING ON ALL ORDERS OVER $150',
+      'BORN IN ATLANTA. BUILT FOR THE BOLD.'
+    ];
+
+    const repeatedText = messages.map(m => `<span>${m}</span>`).join(' &nbsp;&bull;&nbsp; ');
+
+    container.innerHTML = `
+      <div class="vs-marquee">
+        <div class="vs-marquee__content">
+          ${repeatedText}
+        </div>
+        <div class="vs-marquee__content" aria-hidden="true">
+          ${repeatedText}
+        </div>
+      </div>
+    `;
+  }
 };
 
 /* ============================================================
@@ -306,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
   vsProductCards.init();
   vsSmoothScroll.init();
   vsNewsletter.init();
-  vsAnnouncementBar.init();
+  vsMarquee.init();
   vsParallax.init();
   vsQuickAdd.init();
   vsColorScheme.init();
@@ -314,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Re-init reveals on Shopify section updates (Theme Editor)
   document.addEventListener('shopify:section:load', () => {
+    vsMarquee.init();
     vsReveal.init();
     vsProductCards.init();
     vsVainCard.init();

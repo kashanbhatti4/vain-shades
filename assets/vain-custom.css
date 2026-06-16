@@ -250,10 +250,22 @@ p {
   z-index: 100;
 }
 
-.header {
+.header-wrapper {
   background-color: var(--vs-dark) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   transition: box-shadow var(--transition-base);
+}
+
+.header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+}
+
+.header.page-width {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
 }
 
 .header.is-scrolled {
@@ -1592,6 +1604,9 @@ textarea:focus {
   background-color: var(--vs-dark) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   color: var(--vs-white) !important;
+  padding: 0 !important;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .utility-bar a,
@@ -1602,6 +1617,10 @@ textarea:focus {
 
 .announcement-bar {
   background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .announcement-bar__message {
@@ -1611,6 +1630,44 @@ textarea:focus {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--vs-white) !important;
+}
+
+/* Loop marquee CSS */
+.vs-marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  width: 100vw;
+  margin: 0;
+  padding: 0.8rem 0;
+}
+
+.vs-marquee__content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: vs-marquee-scroll 35s linear infinite;
+}
+
+.vs-marquee__content span {
+  display: inline-block;
+  padding: 0 4rem;
+  font-family: var(--font-lato);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vs-white) !important;
+}
+
+@keyframes vs-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 /* ============================================================
