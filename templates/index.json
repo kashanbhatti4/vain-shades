@@ -45,9 +45,9 @@
       ],
       "settings": {
         "image": "shopify://shop_images/herobg2.jpg",
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 30,
         "image_height": "large",
-        "image_behavior": "fixed",
+        "image_behavior": "none",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
         "show_text_box": false,
