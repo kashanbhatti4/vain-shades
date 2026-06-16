@@ -1,0 +1,59 @@
+<div class="vs-brand-statement">
+  <div class="page-width">
+    <div class="vs-brand-statement__grid">
+      <div class="vs-brand-statement__left">
+        <div class="vs-brand-statement__line"></div>
+        <div class="vs-brand-statement__brand-accent">
+          <span>VAIN SHADES</span>
+          <span class="vs-brand-statement__year">EST. 2026</span>
+        </div>
+      </div>
+      <div class="vs-brand-statement__right">
+        {%- if section.settings.subheading != blank -%}
+          <span class="vs-brand-statement__subheading vs-momo">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="vs-brand-statement__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body_text != blank -%}
+          <div class="vs-brand-statement__body">
+            {{ section.settings.body_text }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Statement",
+  "tag": "section",
+  "class": "section-vs-brand-statement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "default": "Vain Shades — Atlanta, GA",
+      "label": "Subheading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Because ordinary was never an option.",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "default": "<p>Exclusive luxury eyewear for those who live boldly and refuse to blend in. Designed with zero compromises on craftsmanship and style, our statement frames are a testament to individuality. Available online and exclusively in select Villain retail locations across Atlanta, Georgia. Discover the collection that redefines contemporary luxury eyewear.</p>",
+      "label": "Body Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Statement"
+    }
+  ]
+}
+{% endschema %}

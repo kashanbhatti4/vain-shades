@@ -1,0 +1,148 @@
+<div class="vs-lookbook color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="vs-lookbook__grid {% if section.settings.image_position == 'right' %}vs-lookbook__grid--reverse{% endif %}">
+      
+      <div class="vs-lookbook__image-col">
+        <div class="vs-lookbook__image-container">
+          {%- if section.settings.image != blank -%}
+            <img 
+              src="{{ section.settings.image | image_url: width: 1000 }}" 
+              alt="{{ section.settings.title | escape }}"
+              loading="lazy"
+              width="100%"
+              height="100%"
+              class="vs-lookbook__img"
+            >
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+      </div>
+      
+      <div class="vs-lookbook__content-col">
+        <div class="vs-lookbook__content-box">
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="vs-lookbook__eyebrow vs-momo">{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+          {%- if section.settings.title != blank -%}
+            <h2 class="vs-lookbook__title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+          {%- if section.settings.description != blank -%}
+            <p class="vs-lookbook__desc">{{ section.settings.description }}</p>
+          {%- endif -%}
+          
+          <div class="vs-lookbook__specs">
+            {%- for block in section.blocks -%}
+              <div class="vs-lookbook__spec-item" {{ block.shopify_attributes }}>
+                <span class="vs-lookbook__spec-title">{{ block.settings.title }}</span>
+                <span class="vs-lookbook__spec-detail">{{ block.settings.detail }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+          
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_link | default: '#' }}" class="vs-btn vs-lookbook__button">
+              {{ section.settings.button_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Lookbook Split",
+  "tag": "section",
+  "class": "section-vs-lookbook",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Focus Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "options": [
+        { "value": "left", "label": "Image Left" },
+        { "value": "right", "label": "Image Right" }
+      ],
+      "default": "left",
+      "label": "Image Position"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "HANDCRAFTED EXCELLENCE",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Atlanta Crafted. Italian Engineered.",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "default": "Every pair of Vain Shades represents a dedication to pure, unadulterated style. Formed from custom acetate sheets, polished by hand for 72 hours, and fitted with high-definition lenses.",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "View Editorial Story",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" }
+      ],
+      "default": "scheme-2",
+      "label": "Color Scheme"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "specification",
+      "name": "Craft Spec Detail",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Lenses",
+          "label": "Spec Title"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "default": "100% UVA/UVB protection",
+          "label": "Spec Detail"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Lookbook Split",
+      "blocks": [
+        { "type": "specification", "settings": { "title": "Hardware", "detail": "Signature 5-barrel gold hinges" } },
+        { "type": "specification", "settings": { "title": "Material", "detail": "Eco-conscious Mazzucchelli acetate" } },
+        { "type": "specification", "settings": { "title": "Fit", "detail": "Universal luxury comfort bridge" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

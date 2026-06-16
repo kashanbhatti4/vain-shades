@@ -1985,3 +1985,755 @@ nav[aria-label="breadcrumbs"] a:hover {
   display: none !important;
 }
 
+/* ============================================================
+   BRAND MARQUEE (vs-marquee)
+   ============================================================ */
+.vs-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 2.4rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+}
+
+.vs-marquee.color-scheme-1 {
+  background-color: var(--vs-white);
+  color: var(--vs-heading);
+}
+
+.vs-marquee.color-scheme-2 {
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+}
+
+.vs-marquee.color-scheme-3 {
+  background-color: var(--vs-accent);
+  color: var(--vs-white);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.vs-marquee__container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.vs-marquee__inner {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  animation: vs-marquee-slide var(--speed, 20s) linear infinite;
+}
+
+.vs-marquee__item {
+  font-family: var(--font-momo);
+  font-size: var(--font-size, 18px);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.vs-marquee__separator {
+  margin-left: 4rem;
+  color: var(--vs-accent);
+}
+
+.vs-marquee.color-scheme-3 .vs-marquee__separator {
+  color: var(--vs-white);
+  opacity: 0.6;
+}
+
+@keyframes vs-marquee-slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ============================================================
+   BRAND STATEMENT (vs-brand-statement)
+   ============================================================ */
+.vs-brand-statement {
+  background-color: var(--vs-white);
+  padding: 10rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.vs-brand-statement__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 750px) {
+  .vs-brand-statement__grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 8rem;
+    align-items: center;
+  }
+}
+
+.vs-brand-statement__left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vs-brand-statement__line {
+  width: 6rem;
+  height: 2px;
+  background-color: var(--vs-accent);
+}
+
+.vs-brand-statement__brand-accent {
+  font-family: var(--font-momo);
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+  color: var(--vs-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.vs-brand-statement__year {
+  font-size: 1.1rem;
+  color: var(--vs-body);
+  letter-spacing: 0.1em;
+}
+
+.vs-brand-statement__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 2.4rem;
+}
+
+.vs-brand-statement__subheading {
+  font-size: 1.4rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+}
+
+.vs-brand-statement__heading {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3.2rem, 5vw, 5.4rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.15 !important;
+  color: var(--vs-heading) !important;
+  margin: 0 !important;
+}
+
+.vs-brand-statement__body {
+  max-width: 68rem;
+}
+
+.vs-brand-statement__body p {
+  font-size: 1.7rem !important;
+  line-height: 1.75 !important;
+  color: var(--vs-body) !important;
+}
+
+@media (max-width: 749px) {
+  .vs-brand-statement {
+    padding: 6rem 0;
+  }
+  .vs-brand-statement__right {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ============================================================
+   EDITORIAL GRID (vs-editorial-grid)
+   ============================================================ */
+.vs-editorial-grid {
+  padding: 8rem 0;
+  background-color: var(--vs-bg);
+}
+
+.vs-editorial-grid.color-scheme-2 {
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+}
+
+.vs-editorial-grid.color-scheme-2 .vs-editorial-grid__title {
+  color: var(--vs-white);
+}
+
+.vs-editorial-grid.color-scheme-2 .vs-editorial-grid__subtext {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vs-editorial-grid__header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.vs-editorial-grid__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(2.8rem, 4vw, 4.2rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading);
+  margin: 0;
+}
+
+.vs-editorial-grid__subtext {
+  font-size: 1.6rem;
+  color: var(--vs-body);
+  line-height: 1.6;
+}
+
+.vs-editorial-grid__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 750px) {
+  .vs-editorial-grid__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.vs-editorial-grid__card {
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  aspect-ratio: 4/5;
+  transition: transform var(--transition-slow);
+}
+
+.vs-editorial-grid__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vs-editorial-grid__image-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-editorial-grid__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.vs-editorial-grid__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    transparent 100%
+  );
+  z-index: 1;
+  transition: opacity var(--transition-base);
+}
+
+.vs-editorial-grid__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3.2rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--vs-white);
+}
+
+.vs-editorial-grid__card-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.vs-editorial-grid__card-title {
+  font-family: var(--font-lato) !important;
+  font-size: 2.8rem !important;
+  font-weight: 300 !important;
+  color: var(--vs-white) !important;
+  margin: 0 !important;
+}
+
+.vs-editorial-grid__card-cta {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0.8;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.vs-editorial-grid__arrow {
+  transition: transform var(--transition-base);
+}
+
+/* Hover States */
+.vs-editorial-grid__card:hover .vs-editorial-grid__image {
+  transform: scale(1.06);
+}
+
+.vs-editorial-grid__card:hover .vs-editorial-grid__card-cta {
+  opacity: 1;
+}
+
+.vs-editorial-grid__card:hover .vs-editorial-grid__arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   PRODUCT GRID (vs-product-grid)
+   ============================================================ */
+.vs-product-grid {
+  padding: 8rem 0;
+  background-color: var(--vs-white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.vs-product-grid__header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.vs-product-grid__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(2.8rem, 4vw, 4.2rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-heading);
+  margin: 0;
+}
+
+.vs-product-grid__subtext {
+  font-size: 1.6rem;
+  color: var(--vs-body);
+}
+
+.vs-product-grid__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 750px) {
+  .vs-product-grid__container.columns-2 { grid-template-columns: repeat(2, 1fr); }
+  .vs-product-grid__container.columns-3 { grid-template-columns: repeat(3, 1fr); }
+  .vs-product-grid__container.columns-4 { grid-template-columns: repeat(4, 1fr); }
+  .vs-product-grid__container {
+    gap: 3rem;
+  }
+}
+
+.vs-product-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--vs-white);
+}
+
+.vs-product-card__image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.vs-product-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.vs-product-card__image--secondary {
+  opacity: 0;
+  z-index: 1;
+}
+
+.vs-product-card:hover .vs-product-card__image--secondary {
+  opacity: 1;
+}
+
+.vs-product-card:hover .vs-product-card__image--primary {
+  transform: scale(1.04);
+}
+
+.vs-product-card__badge {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  background-color: var(--vs-accent);
+  color: var(--vs-white);
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  z-index: 2;
+}
+
+.vs-product-card__badge--sold-out {
+  background-color: #666666;
+}
+
+.vs-product-card__quick-add {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.6rem;
+  transform: translateY(100%);
+  transition: transform var(--transition-base);
+  z-index: 3;
+}
+
+.vs-product-card:hover .vs-product-card__quick-add {
+  transform: translateY(0);
+}
+
+.vs-product-card__form {
+  margin: 0 !important;
+}
+
+.vs-product-card__btn {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+  border: none;
+  font-family: var(--font-momo);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-base), transform var(--transition-base);
+}
+
+.vs-product-card__btn:hover {
+  background-color: var(--vs-accent);
+}
+
+.vs-product-card__details {
+  padding: 1.6rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.vs-product-card__title {
+  font-family: var(--font-lato) !important;
+  font-size: 1.6rem !important;
+  font-weight: 400 !important;
+  margin: 0 !important;
+  color: var(--vs-heading) !important;
+}
+
+.vs-product-card__price {
+  font-family: var(--font-lato);
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.vs-product-card__price--regular {
+  color: var(--vs-accent);
+}
+
+.vs-product-card__price--sale {
+  color: var(--vs-accent);
+}
+
+.vs-product-card__price--compare {
+  color: var(--vs-body);
+  text-decoration: line-through;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+/* ============================================================
+   LUXURY LOOKBOOK SPLIT (vs-lookbook)
+   ============================================================ */
+.vs-lookbook {
+  padding: 10rem 0;
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+}
+
+.vs-lookbook.color-scheme-1 {
+  background-color: var(--vs-bg);
+  color: var(--vs-heading);
+}
+
+.vs-lookbook.color-scheme-1 .vs-lookbook__title { color: var(--vs-heading); }
+.vs-lookbook.color-scheme-1 .vs-lookbook__desc { color: var(--vs-body); }
+.vs-lookbook.color-scheme-1 .vs-lookbook__spec-item { border-color: rgba(0, 0, 0, 0.08); }
+.vs-lookbook.color-scheme-1 .vs-lookbook__spec-title { color: var(--vs-heading); }
+.vs-lookbook.color-scheme-1 .vs-lookbook__spec-detail { color: var(--vs-body); }
+
+.vs-lookbook__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+}
+
+@media (min-width: 750px) {
+  .vs-lookbook__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8rem;
+    align-items: center;
+  }
+  
+  .vs-lookbook__grid--reverse .vs-lookbook__image-col {
+    order: 2;
+  }
+  
+  .vs-lookbook__grid--reverse .vs-lookbook__content-col {
+    order: 1;
+  }
+}
+
+.vs-lookbook__image-container {
+  aspect-ratio: 4/5;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.vs-lookbook__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vs-lookbook__content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+}
+
+.vs-lookbook__eyebrow {
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  color: var(--vs-accent);
+}
+
+.vs-lookbook__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3rem, 5vw, 4.8rem) !important;
+  font-weight: 300 !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+  color: var(--vs-white);
+}
+
+.vs-lookbook__desc {
+  font-size: 1.6rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.vs-lookbook__specs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.vs-lookbook__spec-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 1.4rem;
+}
+
+.vs-lookbook__spec-title {
+  font-weight: 700;
+  color: var(--vs-white);
+}
+
+.vs-lookbook__spec-detail {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vs-lookbook__button {
+  margin-top: 1.6rem;
+}
+
+@media (max-width: 749px) {
+  .vs-lookbook {
+    padding: 6rem 0;
+  }
+}
+
+/* ============================================================
+   LUXURY NEWSLETTER (vs-newsletter)
+   ============================================================ */
+.vs-newsletter {
+  padding: 10rem 0;
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vs-newsletter.color-scheme-1 {
+  background-color: var(--vs-bg);
+  color: var(--vs-heading);
+}
+
+.vs-newsletter.color-scheme-1 .vs-newsletter__title { color: var(--vs-heading); }
+.vs-newsletter.color-scheme-1 .vs-newsletter__subtitle { color: var(--vs-body); }
+.vs-newsletter.color-scheme-1 .vs-newsletter__input {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--vs-heading);
+}
+.vs-newsletter.color-scheme-1 .vs-newsletter__submit-btn { color: var(--vs-heading); }
+
+.vs-newsletter__container {
+  max-width: 72rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.vs-newsletter__title {
+  font-family: var(--font-lato) !important;
+  font-size: clamp(3.2rem, 5vw, 5rem) !important;
+  font-weight: 300 !important;
+  color: var(--vs-white);
+  margin: 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.vs-newsletter__subtitle {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 58rem;
+  margin: 0 auto 1.6rem auto;
+}
+
+.vs-newsletter__form-container {
+  width: 100%;
+}
+
+.vs-newsletter__input-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+  align-items: center;
+  transition: border-color var(--transition-base);
+}
+
+.vs-newsletter__input-wrapper:focus-within {
+  border-color: var(--vs-accent);
+}
+
+.vs-newsletter.color-scheme-1 .vs-newsletter__input-wrapper {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.vs-newsletter.color-scheme-1 .vs-newsletter__input-wrapper:focus-within {
+  border-color: var(--vs-accent);
+}
+
+.vs-newsletter__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.8rem 1.6rem;
+  font-family: var(--font-momo);
+  font-size: 1.3rem;
+  color: var(--vs-white);
+  letter-spacing: 0.15em;
+  outline: none;
+}
+
+.vs-newsletter__input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.vs-newsletter.color-scheme-1 .vs-newsletter__input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.vs-newsletter__submit-btn {
+  background: transparent;
+  border: none;
+  color: var(--vs-white);
+  font-family: var(--font-momo);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 1.6rem 2.4rem;
+  transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.vs-newsletter__submit-btn:hover {
+  color: var(--vs-accent);
+  transform: translateX(4px);
+}
+
+.vs-newsletter__message {
+  display: block;
+  margin-top: 1.6rem;
+  font-size: 1.4rem;
+}
+
+.vs-newsletter__message--error {
+  color: #ff6b6b;
+}
+
+.vs-newsletter__message--success {
+  color: #51cf66;
+}
+
+@media (max-width: 749px) {
+  .vs-newsletter {
+    padding: 6rem 0;
+  }
+}

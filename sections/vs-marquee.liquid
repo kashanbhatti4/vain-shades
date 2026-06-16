@@ -1,0 +1,92 @@
+<div class="vs-marquee color-{{ section.settings.color_scheme }}" style="--speed: {{ section.settings.speed }}s; --font-size: {{ section.settings.font_size }}px;">
+  <div class="vs-marquee__container">
+    <div class="vs-marquee__inner">
+      {%- capture marquee_content -%}
+        {%- for block in section.blocks -%}
+          <span class="vs-marquee__item">
+            {{ block.settings.text }}
+            {%- if section.settings.show_separator -%}
+              <span class="vs-marquee__separator">•</span>
+            {%- endif -%}
+          </span>
+        {%- endfor -%}
+      {%- endcapture -%}
+      
+      {{ marquee_content }}
+      {{ marquee_content }}
+      {{ marquee_content }}
+      {{ marquee_content }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Marquee",
+  "tag": "section",
+  "class": "section-vs-marquee",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" }
+      ],
+      "default": "scheme-2",
+      "label": "Color Scheme"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "default": 20,
+      "label": "Animation Duration (Seconds)",
+      "info": "Lower is faster."
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 64,
+      "step": 2,
+      "default": 18,
+      "label": "Font Size (px)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator",
+      "default": true,
+      "label": "Show bullet separator between items"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Marquee Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "UNAPOLOGETICALLY BOLD",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Marquee",
+      "blocks": [
+        { "type": "text", "settings": { "text": "BORN IN ATLANTA" } },
+        { "type": "text", "settings": { "text": "LUXURY REDEFINED" } },
+        { "type": "text", "settings": { "text": "UNAPOLOGETICALLY BOLD" } },
+        { "type": "text", "settings": { "text": "VAIN SHADES" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

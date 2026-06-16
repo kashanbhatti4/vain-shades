@@ -1,0 +1,103 @@
+<div class="vs-newsletter color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="vs-newsletter__container">
+      {%- if section.settings.title != blank -%}
+        <h2 class="vs-newsletter__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="vs-newsletter__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+      
+      <div class="vs-newsletter__form-container">
+        {%- form 'customer', class: 'vs-newsletter__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="vs-newsletter__input-wrapper">
+            <input
+              id="NewsletterForm--{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              class="vs-newsletter__input"
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="Newsletter-error--{{ section.id }}"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="Newsletter-success--{{ section.id }}"
+              {% endif %}
+              placeholder="YOUR EMAIL ADDRESS"
+              required
+            >
+            <button
+              type="submit"
+              class="vs-newsletter__submit-btn"
+              name="commit"
+              id="Subscribe--{{ section.id }}"
+              aria-label="Subscribe"
+            >
+              SUBSCRIBE →
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <small class="vs-newsletter__message vs-newsletter__message--error" id="Newsletter-error--{{ section.id }}">
+              {{- form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email -}}
+            </small>
+          {%- endif -%}
+          {%- if form.posted_successfully? -%}
+            <p
+              class="vs-newsletter__message vs-newsletter__message--success"
+              id="Newsletter-success--{{ section.id }}"
+              tabindex="-1"
+              autofocus
+            >
+              Welcome to Vain Shades. You have been added to our mailing list.
+            </p>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Luxury Newsletter Signup",
+  "tag": "section",
+  "class": "section-vs-newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Join the Inner Circle",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Subscribe to receive announcements on exclusive drops, editorial campaigns, and members-only events.",
+      "label": "Subtext"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "Scheme 1" },
+        { "value": "scheme-2", "label": "Scheme 2" },
+        { "value": "scheme-3", "label": "Scheme 3" }
+      ],
+      "default": "scheme-3",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}
