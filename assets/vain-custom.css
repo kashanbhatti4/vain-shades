@@ -1878,197 +1878,32 @@ nav[aria-label="breadcrumbs"] a:hover {
    FEATURED PRODUCTS (COLLECTION) SECTION OVERRIDES
    ============================================================ */
 [id*="__featured_products"] {
-  background-color: #f5f5f5 !important;
-  padding: 10rem 0 !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+[id*="__featured_products"] .collection {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
 }
 
-[id*="__featured_products"] .title-wrapper-with-link {
-  margin-bottom: 6rem !important;
-  justify-content: center !important;
-  text-align: center !important;
-}
-
-[id*="__featured_products"] .title {
-  font-family: var(--font-lato) !important;
-  font-weight: 300 !important;
-  font-size: 3.6rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.15em !important;
-  color: var(--vs-heading) !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-
-[id*="__featured_products"] .card-wrapper {
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease !important;
-  background-color: transparent !important;
-}
-
-[id*="__featured_products"] .card-wrapper:hover {
-  transform: translateY(-8px) !important;
-}
-
-[id*="__featured_products"] .card {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-[id*="__featured_products"] .card__inner {
-  background-color: #eaeaea !important;
-  border: none !important;
-  border-radius: 0 !important;
-  overflow: hidden !important;
-}
-
-[id*="__featured_products"] .card__media img {
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
-
-[id*="__featured_products"] .card__content {
-  padding: 0 !important;
-  background: transparent !important;
-}
-
-[id*="__featured_products"] .card__heading {
-  text-align: center !important;
-  margin-top: 2rem !important;
-}
-
-[id*="__featured_products"] .card__heading a {
-  font-family: var(--font-lato) !important;
-  font-weight: 400 !important;
-  font-size: 1.4rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  color: var(--vs-heading) !important;
-}
-
-[id*="__featured_products"] .price {
-  justify-content: center !important;
-  text-align: center !important;
-  font-size: 1.4rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.05em !important;
-  color: var(--vs-body) !important;
-  margin-top: 0.6rem !important;
-}
-
-/* Hover Quick Add Overlay */
-[id*="__featured_products"] .card-wrapper .quick-add {
-  position: absolute !important;
-  bottom: 2rem !important;
-  left: 2rem !important;
-  right: 2rem !important;
-  z-index: 3 !important;
-  opacity: 0 !important;
-  transform: translateY(12px) !important;
-  transition: opacity 0.35s ease, transform 0.35s ease !important;
-}
-
-[id*="__featured_products"] .card-wrapper:hover .quick-add {
+/* ============================================================
+   DISABLE THEME ANIMATIONS
+   ============================================================ */
+.scroll-trigger,
+.scroll-trigger.animate--fade-in,
+.scroll-trigger.animate--slide-in,
+.scroll-trigger.animate--zoom-in,
+.animate--zoom-in,
+.animate--fade-in,
+.animate--slide-in {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+.scroll-trigger:after,
+.scroll-trigger.animate--fade-in:after,
+.scroll-trigger.animate--slide-in:after {
+  display: none !important;
 }
 
-[id*="__featured_products"] .quick-add__submit {
-  background-color: var(--vs-dark) !important;
-  color: var(--vs-white) !important;
-  border: 1px solid var(--vs-dark) !important;
-  border-radius: 0 !important;
-  padding: 1.4rem 2rem !important;
-  font-family: var(--font-lato) !important;
-  font-weight: 600 !important;
-  font-size: 1.1rem !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  width: 100% !important;
-  transition: all 0.3s ease !important;
-  cursor: pointer !important;
-}
-
-[id*="__featured_products"] .quick-add__submit:hover {
-  background-color: var(--vs-accent) !important;
-  border-color: var(--vs-accent) !important;
-  color: var(--vs-white) !important;
-}
-
-@media screen and (max-width: 749px) {
-  [id*="__featured_products"] {
-    padding: 6rem 0 !important;
-  }
-  
-  [id*="__featured_products"] .title {
-    font-size: 2.8rem !important;
-  }
-
-  [id*="__featured_products"] .card-wrapper .quick-add {
-    position: static !important;
-    opacity: 1 !important;
-    transform: none !important;
-    margin-top: 1rem !important;
-    padding: 0 !important;
-  }
-  
-  [id*="__featured_products"] .quick-add__submit {
-    padding: 1rem !important;
-    font-size: 1rem !important;
-  }
-}
-
-/* Clean Badge Styling */
-[id*="__featured_products"] .card__badge {
-  position: absolute !important;
-  top: 1.5rem !important;
-  left: 1.5rem !important;
-  display: flex !important;
-  gap: 0.5rem !important;
-}
-
-[id*="__featured_products"] .card__badge .badge {
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0.4rem 1rem !important;
-  font-family: var(--font-lato) !important;
-  font-size: 0.9rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-}
-
-[id*="__featured_products"] .badge--onsale {
-  background-color: var(--vs-accent) !important;
-  color: var(--vs-white) !important;
-}
-
-[id*="__featured_products"] .badge--soldout {
-  background-color: var(--vs-dark) !important;
-  color: var(--vs-white) !important;
-}
-
-/* Elegant View All Button */
-[id*="__featured_products"] .collection__view-all {
-  margin-top: 6rem !important;
-  text-align: center !important;
-}
-
-[id*="__featured_products"] .collection__view-all a {
-  border-radius: 0 !important;
-  border: 1px solid var(--vs-dark) !important;
-  background-color: transparent !important;
-  color: var(--vs-dark) !important;
-  font-family: var(--font-lato) !important;
-  font-weight: 600 !important;
-  font-size: 1.2rem !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  padding: 1.6rem 4.5rem !important;
-  transition: all 0.3s ease !important;
-  display: inline-block !important;
-}
-
-[id*="__featured_products"] .collection__view-all a:hover {
-  background-color: var(--vs-dark) !important;
-  color: var(--vs-white) !important;
-  border-color: var(--vs-dark) !important;
-}
