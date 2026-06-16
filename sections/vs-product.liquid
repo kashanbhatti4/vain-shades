@@ -1,0 +1,500 @@
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- assign product_form_id = 'vs-product-form-' | append: section.id -%}
+
+<div class="vs-product" data-section-id="{{ section.id }}">
+
+  <!-- ===================== MAIN PRODUCT AREA ===================== -->
+  <div class="vs-product__layout page-width">
+
+    <!-- LEFT: Gallery -->
+    <div class="vs-product__gallery">
+
+      <!-- Thumbnail Rail -->
+      <div class="vs-product__thumbs" id="vs-thumbs">
+        {%- for media in product.media -%}
+          <button
+            class="vs-product__thumb {% if forloop.first %}is-active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            aria-label="View image {{ forloop.index }}"
+            type="button"
+          >
+            <img
+              src="{{ media | image_url: width: 120 }}"
+              alt="{{ media.alt | escape }}"
+              loading="lazy"
+              width="80"
+              height="80"
+            >
+          </button>
+        {%- endfor -%}
+      </div>
+
+      <!-- Main Image -->
+      <div class="vs-product__main-image" id="vs-main-image">
+        {%- for media in product.media -%}
+          <div class="vs-product__slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+            {%- if media.media_type == 'video' -%}
+              <video
+                src="{{ media.sources[1].url | default: media.sources[0].url }}"
+                autoplay muted loop playsinline
+                class="vs-product__media-img"
+              ></video>
+            {%- else -%}
+              <img
+                src="{{ media | image_url: width: 1200 }}"
+                alt="{{ media.alt | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                width="100%"
+                height="100%"
+                class="vs-product__media-img"
+              >
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+        <!-- Nav arrows (only if >1 media) -->
+        {%- if product.media.size > 1 -%}
+          <button class="vs-product__arrow vs-product__arrow--prev" id="vs-prev" aria-label="Previous image" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+          <button class="vs-product__arrow vs-product__arrow--next" id="vs-next" aria-label="Next image" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Product Info (sticky) -->
+    <div class="vs-product__info" id="vs-product-info">
+
+      <!-- Breadcrumb -->
+      <nav class="vs-product__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">Home</a>
+        <span>/</span>
+        <a href="{{ product.collections.first.url | default: routes.collections_url }}">{{ product.collections.first.title | default: 'Shop' }}</a>
+        <span>/</span>
+        <span>{{ product.title | truncate: 30 }}</span>
+      </nav>
+
+      <!-- Type label -->
+      {%- if product.type != blank -%}
+        <span class="vs-product__type">{{ product.type | upcase }}</span>
+      {%- endif -%}
+
+      <!-- Title -->
+      <h1 class="vs-product__title">{{ product.title }}</h1>
+
+      <!-- Price -->
+      <div class="vs-product__price-block" id="vs-price">
+        {%- if selected_variant.compare_at_price > selected_variant.price -%}
+          <span class="vs-product__price-compare">{{ selected_variant.compare_at_price | money }}</span>
+          <span class="vs-product__price-main vs-product__price-main--sale">{{ selected_variant.price | money }}</span>
+          <span class="vs-product__badge-sale">SALE</span>
+        {%- else -%}
+          <span class="vs-product__price-main">{{ selected_variant.price | money }}</span>
+        {%- endif -%}
+      </div>
+
+      <!-- Divider -->
+      <div class="vs-product__divider"></div>
+
+      <!-- Variant Form -->
+      {%- form 'product', product, id: product_form_id, class: 'vs-product__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="vs-product__option" data-option-index="{{ forloop.index0 }}">
+              <div class="vs-product__option-header">
+                <span class="vs-product__option-name">{{ option.name }}</span>
+                <span class="vs-product__option-selected" id="vs-opt-val-{{ forloop.index0 }}">{{ option.selected_value }}</span>
+              </div>
+
+              {%- assign option_name_lower = option.name | downcase -%}
+
+              {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
+                <!-- Color swatch buttons -->
+                <div class="vs-product__swatches">
+                  {%- for value in option.values -%}
+                    {%- assign swatch_color = value | split: ' ' | last | handle -%}
+                    <button
+                      type="button"
+                      class="vs-product__swatch {% if value == option.selected_value %}is-active{% endif %}"
+                      data-value="{{ value | escape }}"
+                      data-option-index="{{ forloop.parentloop.index0 }}"
+                      data-color="{{ swatch_color }}"
+                      style="background-color: {{ swatch_color }};"
+                      title="{{ value | escape }}"
+                      aria-label="{{ value | escape }}"
+                    ></button>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <!-- Pill buttons for other options -->
+                <div class="vs-product__pills">
+                  {%- for value in option.values -%}
+                    <button
+                      type="button"
+                      class="vs-product__pill {% if value == option.selected_value %}is-active{% endif %}"
+                      data-value="{{ value | escape }}"
+                      data-option-index="{{ forloop.parentloop.index0 }}"
+                      aria-label="{{ option.name }}: {{ value }}"
+                    >{{ value }}</button>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        <!-- Hidden variant input -->
+        <input type="hidden" name="id" id="vs-variant-id" value="{{ selected_variant.id }}">
+
+        <!-- Quantity -->
+        <div class="vs-product__qty-row">
+          <div class="vs-product__qty">
+            <button type="button" class="vs-product__qty-btn" id="vs-qty-minus" aria-label="Decrease quantity">−</button>
+            <input
+              type="number"
+              name="quantity"
+              id="vs-qty-input"
+              class="vs-product__qty-input"
+              value="1"
+              min="1"
+              aria-label="Quantity"
+            >
+            <button type="button" class="vs-product__qty-btn" id="vs-qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+          <span class="vs-product__availability" id="vs-availability">
+            {%- if selected_variant.available -%}
+              <span class="vs-product__avail-dot vs-product__avail-dot--in"></span> In Stock
+            {%- else -%}
+              <span class="vs-product__avail-dot vs-product__avail-dot--out"></span> Sold Out
+            {%- endif -%}
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="vs-product__cta">
+          <button
+            type="submit"
+            name="add"
+            class="vs-product__add-btn"
+            id="vs-add-btn"
+            {%- unless selected_variant.available -%}disabled{%- endunless -%}
+          >
+            <span id="vs-btn-text">
+              {%- if selected_variant.available -%}ADD TO CART{%- else -%}SOLD OUT{%- endif -%}
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </button>
+
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        </div>
+
+      {%- endform -%}
+
+      <!-- Divider -->
+      <div class="vs-product__divider"></div>
+
+      <!-- Description Accordion -->
+      {%- if product.description != blank or section.settings.show_description -%}
+        <details class="vs-product__accordion" open>
+          <summary class="vs-product__accordion-head">
+            <span>Description</span>
+            <svg class="vs-product__accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="vs-product__accordion-body rte">
+            {{ product.description }}
+          </div>
+        </details>
+      {%- endif -%}
+
+      <!-- Details Accordion -->
+      <details class="vs-product__accordion">
+        <summary class="vs-product__accordion-head">
+          <span>Details & Care</span>
+          <svg class="vs-product__accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="vs-product__accordion-body">
+          <ul class="vs-product__details-list">
+            <li>Frame: Premium Mazzucchelli Italian Acetate</li>
+            <li>Lens: UV400 CR-39 Polarized</li>
+            <li>Hardware: Signature 5-barrel gold hinges</li>
+            <li>Includes: Hard case, lens cloth &amp; certificate of authenticity</li>
+            <li>Care: Avoid prolonged heat exposure. Clean with provided cloth.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Shipping Accordion -->
+      <details class="vs-product__accordion">
+        <summary class="vs-product__accordion-head">
+          <span>Shipping & Returns</span>
+          <svg class="vs-product__accordion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="vs-product__accordion-body">
+          <ul class="vs-product__details-list">
+            <li>Free express shipping on orders over $150</li>
+            <li>Estimated delivery: 3–5 business days</li>
+            <li>30-day hassle-free returns</li>
+            <li>All items are quality-checked before dispatch</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Trust Strip -->
+      <div class="vs-product__trust">
+        <div class="vs-product__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Authenticity Guaranteed</span>
+        </div>
+        <div class="vs-product__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Free Express Shipping</span>
+        </div>
+        <div class="vs-product__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          <span>30-Day Returns</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== RELATED PRODUCTS ===================== -->
+  {%- assign related = product.collections.first.products | default: false -%}
+  {%- if related -%}
+    <div class="vs-product__related">
+      <div class="page-width">
+        <div class="vs-product__related-header">
+          <span class="vs-product__related-eyebrow">YOU MAY ALSO LIKE</span>
+          <h2 class="vs-product__related-title">Complete the Look</h2>
+        </div>
+        <div class="vs-product-grid__container columns-4">
+          {%- assign shown = 0 -%}
+          {%- for p in related -%}
+            {%- if p.handle != product.handle and shown < 4 -%}
+              {%- assign shown = shown | plus: 1 -%}
+              {%- assign related_form_id = 'vs-related-' | append: section.id | append: p.id -%}
+              <div class="vs-product-card">
+                <div class="vs-product-card__image-wrapper">
+                  <a href="{{ p.url }}" class="vs-product-card__link" aria-label="{{ p.title | escape }}">
+                    {%- if p.featured_media != blank -%}
+                      <img
+                        src="{{ p.featured_media | image_url: width: 600 }}"
+                        alt="{{ p.featured_media.alt | escape }}"
+                        loading="lazy"
+                        width="100%"
+                        height="100%"
+                        class="vs-product-card__image {% if p.media[1] != blank %}vs-product-card__image--primary{% endif %}"
+                      >
+                      {%- if p.media[1] != blank -%}
+                        <img
+                          src="{{ p.media[1] | image_url: width: 600 }}"
+                          alt="{{ p.media[1].alt | escape }}"
+                          loading="lazy"
+                          width="100%"
+                          height="100%"
+                          class="vs-product-card__image vs-product-card__image--secondary"
+                        >
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {%- endif -%}
+                  </a>
+                  {%- if p.compare_at_price > p.price -%}
+                    <span class="vs-product-card__badge vs-product-card__badge--sale">SALE</span>
+                  {%- elsif p.available == false -%}
+                    <span class="vs-product-card__badge vs-product-card__badge--sold-out">SOLD OUT</span>
+                  {%- endif -%}
+                </div>
+                <div class="vs-product-card__details">
+                  <div class="vs-product-card__meta-row">
+                    <span class="vs-product-card__type">{{ p.type | upcase | default: 'LUXURY SHADES' }}</span>
+                  </div>
+                  <h3 class="vs-product-card__title"><a href="{{ p.url }}">{{ p.title }}</a></h3>
+                  <div class="vs-product-card__price">
+                    {%- if p.compare_at_price > p.price -%}
+                      <span class="vs-product-card__price--compare">{{ p.compare_at_price | money }}</span>
+                      <span class="vs-product-card__price--sale">{{ p.price | money }}</span>
+                    {%- else -%}
+                      <span class="vs-product-card__price--regular">{{ p.price | money }}</span>
+                    {%- endif -%}
+                  </div>
+                  {%- if p.available -%}
+                    <div class="vs-product-card__actions">
+                      {%- form 'product', p, id: related_form_id, class: 'form vs-product-card__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                        <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+                        <button type="submit" name="add" class="vs-product-card__btn-outline">ADD TO CART</button>
+                      {%- endform -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<!-- ===================== VARIANT + GALLERY JS ===================== -->
+<script>
+(function () {
+  var productData = {{ product.variants | json }};
+
+  // Gallery
+  var currentIndex = 0;
+  var slides = document.querySelectorAll('.vs-product__slide');
+  var thumbs = document.querySelectorAll('.vs-product__thumb');
+
+  function goTo(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+    slides.forEach(function(s) { s.classList.remove('is-active'); });
+    thumbs.forEach(function(t) { t.classList.remove('is-active'); });
+    slides[index].classList.add('is-active');
+    if (thumbs[index]) thumbs[index].classList.add('is-active');
+    currentIndex = index;
+  }
+
+  thumbs.forEach(function(t) {
+    t.addEventListener('click', function () { goTo(parseInt(this.dataset.index)); });
+  });
+
+  var prevBtn = document.getElementById('vs-prev');
+  var nextBtn = document.getElementById('vs-next');
+  if (prevBtn) prevBtn.addEventListener('click', function () { goTo(currentIndex - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { goTo(currentIndex + 1); });
+
+  // Quantity
+  var qtyInput = document.getElementById('vs-qty-input');
+  document.getElementById('vs-qty-minus').addEventListener('click', function () {
+    if (parseInt(qtyInput.value) > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+  });
+  document.getElementById('vs-qty-plus').addEventListener('click', function () {
+    qtyInput.value = parseInt(qtyInput.value) + 1;
+  });
+
+  // Variant selection
+  var selectedOptions = [
+    {%- for option in product.options_with_values -%}
+      "{{ option.selected_value | escape }}"{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ];
+
+  function findVariant() {
+    return productData.find(function (v) {
+      return v.options.every(function (opt, i) { return opt === selectedOptions[i]; });
+    });
+  }
+
+  function updateUI(variant) {
+    if (!variant) return;
+
+    // Price
+    var priceBlock = document.getElementById('vs-price');
+    if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+      priceBlock.innerHTML =
+        '<span class="vs-product__price-compare">' + formatMoney(variant.compare_at_price) + '</span>' +
+        '<span class="vs-product__price-main vs-product__price-main--sale">' + formatMoney(variant.price) + '</span>' +
+        '<span class="vs-product__badge-sale">SALE</span>';
+    } else {
+      priceBlock.innerHTML = '<span class="vs-product__price-main">' + formatMoney(variant.price) + '</span>';
+    }
+
+    // Variant ID
+    document.getElementById('vs-variant-id').value = variant.id;
+
+    // Button / availability
+    var addBtn = document.getElementById('vs-add-btn');
+    var btnText = document.getElementById('vs-btn-text');
+    var avail = document.getElementById('vs-availability');
+
+    if (variant.available) {
+      addBtn.disabled = false;
+      btnText.textContent = 'ADD TO CART';
+      avail.innerHTML = '<span class="vs-product__avail-dot vs-product__avail-dot--in"></span> In Stock';
+    } else {
+      addBtn.disabled = true;
+      btnText.textContent = 'SOLD OUT';
+      avail.innerHTML = '<span class="vs-product__avail-dot vs-product__avail-dot--out"></span> Sold Out';
+    }
+  }
+
+  function formatMoney(cents) {
+    return '$' + (cents / 100).toFixed(2);
+  }
+
+  // Pill & swatch clicks
+  document.querySelectorAll('.vs-product__pill, .vs-product__swatch').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var optionIndex = parseInt(this.dataset.optionIndex);
+      var value = this.dataset.value;
+      selectedOptions[optionIndex] = value;
+
+      // Update active state within this option group
+      var siblings = this.parentElement.querySelectorAll('[data-option-index="' + optionIndex + '"]');
+      siblings.forEach(function (s) { s.classList.remove('is-active'); });
+      this.classList.add('is-active');
+
+      // Update displayed selected value label
+      var label = document.getElementById('vs-opt-val-' + optionIndex);
+      if (label) label.textContent = value;
+
+      updateUI(findVariant());
+    });
+  });
+
+  // Accordion icons
+  document.querySelectorAll('.vs-product__accordion').forEach(function (acc) {
+    acc.addEventListener('toggle', function () {
+      var icon = this.querySelector('.vs-product__accordion-icon');
+      if (icon) icon.style.transform = this.open ? 'rotate(180deg)' : 'rotate(0deg)';
+    });
+  });
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "tag": "section",
+  "class": "section-vs-product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout",
+      "default": true,
+      "label": "Show dynamic checkout button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "default": true,
+      "label": "Show description accordion"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        { "value": "scheme-1", "label": "White" },
+        { "value": "scheme-2", "label": "Dark" }
+      ],
+      "default": "scheme-1",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Page"
+    }
+  ]
+}
+{% endschema %}
