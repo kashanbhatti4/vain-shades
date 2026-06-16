@@ -4047,6 +4047,7 @@ a.vs-collection__page-num:hover {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Thumbnail strip — horizontal row below main image */
@@ -4062,7 +4063,7 @@ a.vs-collection__page-num:hover {
   width: 7.2rem;
   height: 7.2rem;
   flex-shrink: 0;
-  border: 2px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background: none;
   padding: 0;
@@ -4070,7 +4071,7 @@ a.vs-collection__page-num:hover {
   transition: border-color 0.2s ease;
 }
 .vs-product__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.vs-product__thumb.is-active, .vs-product__thumb:hover { border-color: var(--vs-dark); }
+.vs-product__thumb.is-active, .vs-product__thumb:hover { border-color: var(--vs-dark); border-width: 2px; }
 .vs-product__slide {
   position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
 }
