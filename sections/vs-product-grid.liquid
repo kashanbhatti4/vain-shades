@@ -19,8 +19,9 @@
         {%- for product in collection.products limit: limit -%}
           {%- assign product_form_id = 'quick-add-' | append: section.id | append: product.id -%}
           <div class="vs-product-card">
+            
             <div class="vs-product-card__image-wrapper">
-              <a href="{{ product.url }}" class="vs-product-card__link">
+              <a href="{{ product.url }}" class="vs-product-card__link" aria-label="{{ product.title | escape }}">
                 {%- if product.featured_media != blank -%}
                   <img 
                     src="{{ product.featured_media | image_url: width: 600 }}" 
@@ -50,23 +51,42 @@
               {%- elsif product.available == false -%}
                 <span class="vs-product-card__badge vs-product-card__badge--sold-out">SOLD OUT</span>
               {%- endif -%}
-
-              {%- if product.available -%}
-                <div class="vs-product-card__quick-add">
-                  {%- form 'product', product, id: product_form_id, class: 'form vs-product-card__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    <button type="submit" name="add" class="vs-product-card__btn" aria-haspopup="dialog">
-                      QUICK ADD +
-                    </button>
-                  {%- endform -%}
-                </div>
-              {%- endif -%}
             </div>
             
             <div class="vs-product-card__details">
+              <div class="vs-product-card__meta-row">
+                <span class="vs-product-card__type">
+                  {%- if product.type != blank -%}
+                    {{ product.type | uppercase }}
+                  {%- else -%}
+                    LUXURY SHADES
+                  {%- endif -%}
+                </span>
+                
+                {%- for option in product.options_with_values -%}
+                  {%- assign option_name_lower = option.name | downcase -%}
+                  {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
+                    <div class="vs-product-card__swatches" aria-label="Available Colors">
+                      {%- for value in option.values limit: 3 -%}
+                        {%- assign swatch_color = value | split: ' ' | last | handle -%}
+                        <span 
+                          class="vs-product-card__swatch" 
+                          style="background-color: {{ swatch_color }};" 
+                          title="{{ value | escape }}"
+                        ></span>
+                      {%- endfor -%}
+                      {%- if option.values.size > 3 -%}
+                        <span class="vs-product-card__swatches-more">+{{ option.values.size | minus: 3 }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              
               <h3 class="vs-product-card__title">
                 <a href="{{ product.url }}">{{ product.title }}</a>
               </h3>
+              
               <div class="vs-product-card__price">
                 {%- if product.compare_at_price > product.price -%}
                   <span class="vs-product-card__price--compare">{{ product.compare_at_price | money }}</span>
@@ -75,7 +95,19 @@
                   <span class="vs-product-card__price--regular">{{ product.price | money }}</span>
                 {%- endif -%}
               </div>
+              
+              {%- if product.available -%}
+                <div class="vs-product-card__actions">
+                  {%- form 'product', product, id: product_form_id, class: 'form vs-product-card__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                    <button type="submit" name="add" class="vs-product-card__btn-outline">
+                      ADD TO CART
+                    </button>
+                  {%- endform -%}
+                </div>
+              {%- endif -%}
             </div>
+            
           </div>
         {%- endfor -%}
       {%- else -%}
@@ -85,9 +117,15 @@
               {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
             </div>
             <div class="vs-product-card__details">
-              <h3 class="vs-product-card__title">Sample Sunglasses</h3>
+              <div class="vs-product-card__meta-row">
+                <span class="vs-product-card__type">LUXURY EYEWEAR</span>
+              </div>
+              <h3 class="vs-product-card__title">Sample Sunglasses {{ i }}</h3>
               <div class="vs-product-card__price">
                 <span class="vs-product-card__price--regular">$120.00</span>
+              </div>
+              <div class="vs-product-card__actions">
+                <button class="vs-product-card__btn-outline" disabled>ADD TO CART</button>
               </div>
             </div>
           </div>
@@ -163,3 +201,4 @@
   ]
 }
 {% endschema %}
+
