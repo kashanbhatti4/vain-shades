@@ -3,28 +3,21 @@
     "hero_banner": {
       "type": "image-banner",
       "blocks": {
-        "eyebrow": {
+        "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Vain Shades — Atlanta Luxury Eyewear",
-            "heading_size": "h3"
-          }
-        },
-        "main_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "See the World\nDifferently.",
+            "heading": "See the World Differently.",
             "heading_size": "h0"
           }
         },
-        "subheading": {
+        "subtext": {
           "type": "text",
           "settings": {
-            "text": "Statement sunglasses. Bold. Glamorous. Fashion-forward. Starting at $180.",
+            "text": "Statement sunglasses. Bold. Glamorous. Fashion-forward.",
             "text_style": "body"
           }
         },
-        "cta_button": {
+        "cta": {
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
@@ -37,14 +30,13 @@
         }
       },
       "block_order": [
-        "eyebrow",
-        "main_heading",
-        "subheading",
-        "cta_button"
+        "heading",
+        "subtext",
+        "cta"
       ],
       "settings": {
         "image_overlay_opacity": 45,
-        "image_height": "full_screen",
+        "image_height": "large",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
         "image_behavior": "none",
@@ -62,8 +54,8 @@
       "settings": {
         "title": "Featured Products",
         "heading_size": "h2",
-        "description": "Our most coveted styles — bold, beautiful, and built for those who dare.",
-        "show_description": true,
+        "description": "",
+        "show_description": false,
         "description_style": "body",
         "collection": "feature-products",
         "products_to_show": 3,
@@ -88,11 +80,12 @@
     "brand_statement": {
       "type": "rich-text",
       "blocks": {
-        "subheading": {
+        "caption": {
           "type": "caption",
           "settings": {
-            "caption": "Vain Shades",
-            "text_style": "subtitle"
+            "caption": "Vain Shades — Atlanta, GA",
+            "text_style": "subtitle",
+            "text_size": "medium"
           }
         },
         "heading": {
@@ -102,26 +95,29 @@
             "heading_size": "h1"
           }
         },
-        "text": {
+        "body": {
           "type": "text",
           "settings": {
-            "text": "Exclusive luxury eyewear for those who live boldly. Available online and in select Villain retail locations across Atlanta, Georgia."
+            "text": "<p>Exclusive luxury eyewear for those who live boldly. Available online and in select Villain retail locations across Atlanta, Georgia.</p>"
           }
         },
-        "button": {
-          "type": "buttons",
+        "cta": {
+          "type": "button",
           "settings": {
-            "button_label_1": "Explore The Collection",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false
+            "button_label": "Explore The Collection",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "subheading",
+        "caption",
         "heading",
-        "text",
-        "button"
+        "body",
+        "cta"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -135,19 +131,19 @@
     "collection_showcase": {
       "type": "collection-list",
       "blocks": {
-        "day_dreamer": {
+        "col_1": {
           "type": "featured_collection",
           "settings": {
             "collection": "home-page"
           }
         },
-        "all_shades": {
+        "col_2": {
           "type": "featured_collection",
           "settings": {
             "collection": "all"
           }
         },
-        "feature_picks": {
+        "col_3": {
           "type": "featured_collection",
           "settings": {
             "collection": "feature-products"
@@ -155,9 +151,9 @@
         }
       },
       "block_order": [
-        "day_dreamer",
-        "all_shades",
-        "feature_picks"
+        "col_1",
+        "col_2",
+        "col_3"
       ],
       "settings": {
         "title": "Shop The Collections",
@@ -179,7 +175,8 @@
           "type": "caption",
           "settings": {
             "caption": "Our Story",
-            "text_style": "subtitle"
+            "text_style": "subtitle",
+            "text_size": "medium"
           }
         },
         "heading": {
@@ -189,13 +186,14 @@
             "heading_size": "h2"
           }
         },
-        "text": {
+        "body": {
           "type": "text",
           "settings": {
-            "text": "Vain Shades was created for those who don't follow fashion — they set it. Our statement sunglasses are designed to command attention, crafted for the glamorous, the unapologetic, and the bold. Based in Atlanta, available worldwide."
+            "text": "<p>Vain Shades was created for those who don\u2019t follow fashion \u2014 they set it. Our statement sunglasses are designed to command attention, crafted for the glamorous, the unapologetic, and the bold.</p>",
+            "text_style": "body"
           }
         },
-        "button": {
+        "btn": {
           "type": "button",
           "settings": {
             "button_label": "Our Full Story",
@@ -207,8 +205,8 @@
       "block_order": [
         "caption",
         "heading",
-        "text",
-        "button"
+        "body",
+        "btn"
       ],
       "settings": {
         "height": "adapt",
@@ -223,41 +221,41 @@
         "padding_bottom": 72
       }
     },
-    "instagram_showcase": {
+    "style_edit": {
       "type": "multicolumn",
       "blocks": {
-        "col1": {
+        "col_1": {
           "type": "column",
           "settings": {
             "title": "Day Dreamer",
-            "text": "The oversized silhouette that turns heads at any Atlanta rooftop.",
+            "text": "<p>The oversized silhouette that turns heads at any Atlanta rooftop.</p>",
             "link_label": "Shop Style",
             "link": "shopify://collections/home-page"
           }
         },
-        "col2": {
+        "col_2": {
           "type": "column",
           "settings": {
             "title": "Soho",
-            "text": "Sharp edges, bold lenses. Street-ready luxury from the A.",
+            "text": "<p>Sharp edges, bold lenses. Street-ready luxury from the A.</p>",
             "link_label": "Shop Style",
             "link": "shopify://collections/all"
           }
         },
-        "col3": {
+        "col_3": {
           "type": "column",
           "settings": {
             "title": "Super Cats",
-            "text": "The cat-eye reimagined. Unapologetically feminine, fiercely editorial.",
+            "text": "<p>The cat-eye reimagined. Unapologetically feminine, fiercely editorial.</p>",
             "link_label": "Shop Style",
             "link": "shopify://collections/feature-products"
           }
         }
       },
       "block_order": [
-        "col1",
-        "col2",
-        "col3"
+        "col_1",
+        "col_2",
+        "col_3"
       ],
       "settings": {
         "title": "The Vain Edit",
@@ -286,16 +284,21 @@
             "heading_size": "h1"
           }
         },
-        "text": {
+        "body": {
           "type": "paragraph",
           "settings": {
-            "text": "Be first to see new drops, exclusive offers, and editorial lookbooks."
+            "text": "<p>Be first to see new drops, exclusive offers, and editorial lookbooks.</p>",
+            "text_style": "body"
           }
+        },
+        "form": {
+          "type": "email_form"
         }
       },
       "block_order": [
         "heading",
-        "text"
+        "body",
+        "form"
       ],
       "settings": {
         "color_scheme": "scheme-3",
@@ -311,7 +314,7 @@
     "brand_statement",
     "collection_showcase",
     "about_teaser",
-    "instagram_showcase",
+    "style_edit",
     "newsletter"
   ]
 }
