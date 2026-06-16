@@ -6,9 +6,165 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "brand_story": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Crafted in Atlanta",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Every pair of Vain Shades tells a story of boldness and glamour, designed for those who live life in the spotlight.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "scheme-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "mission": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Vision",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To create the most statement-making, high-fashion eyewear in the South. Bold. Glamorous. Unapologetic.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "testimonials": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_1": {
+          "type": "column",
+          "settings": {
+            "title": "\"Pure Glamour\"",
+            "text": "<p>The oversized frames are perfect. I feel like an absolute star whenever I wear them in Midtown.</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        "col_2": {
+          "type": "column",
+          "settings": {
+            "title": "\"Luxury Quality\"",
+            "text": "<p>The weight, the acetate, the lenses — everything screams high fashion. Better than designer brands.</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        },
+        "col_3": {
+          "type": "column",
+          "settings": {
+            "title": "\"Bold & Unique\"",
+            "text": "<p>You won't find eyewear like this anywhere else in Atlanta. Total head-turner.</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3"
+      ],
+      "settings": {
+        "title": "Testimonials",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "store_locations": {
+      "type": "multicolumn",
+      "blocks": {
+        "loc_1": {
+          "type": "column",
+          "settings": {
+            "title": "Buckhead Showroom",
+            "text": "<p>3280 Peachtree Rd NE<br>Atlanta, GA 30305</p>"
+          }
+        },
+        "loc_2": {
+          "type": "column",
+          "settings": {
+            "title": "Ponce City Market",
+            "text": "<p>675 Ponce De Leon Ave NE<br>Atlanta, GA 30308</p>"
+          }
+        }
+      },
+      "block_order": [
+        "loc_1",
+        "loc_2"
+      ],
+      "settings": {
+        "title": "Visit Us in Atlanta",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "brand_story",
+    "mission",
+    "testimonials",
+    "store_locations"
   ]
 }
