@@ -44,9 +44,7 @@
         "color_scheme": "scheme-3",
         "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
-        "show_text_below": false,
-        "padding_top": 0,
-        "padding_bottom": 0
+        "show_text_below": false
       }
     },
     "featured_products": {
@@ -302,9 +300,12 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "full_width": true,
-        "padding_top": 80,
-        "padding_bottom": 80
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     }
   },
