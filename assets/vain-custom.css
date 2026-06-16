@@ -20,14 +20,14 @@
    ============================================================ */
 :root {
   /* Brand Colors */
-  --vs-bg:        #E9EEF3;
-  --vs-heading:   #0C1A2B;
-  --vs-body:      #475465;
-  --vs-accent:    #BC3F19;
-  --vs-white:     #FFFFFF;
-  --vs-surface:   #D8DFE8;
-  --vs-dark:      #0C1A2B;
-  --vs-accent-hover: #9e3514;
+  --vs-bg:            #F5F5F5;
+  --vs-heading:       #121212;
+  --vs-body:          #5A5A5A;
+  --vs-accent:        #C5A880;
+  --vs-white:         #FFFFFF;
+  --vs-surface:       #E5E5E5;
+  --vs-dark:          #121212;
+  --vs-accent-hover:  #A88E67;
 
   /* Typography */
   --font-momo:    'Momo Signature', cursive;
