@@ -1481,230 +1481,455 @@ p {
 }
 
 /* ============================================================
-   CART DRAWER
-   Cosmetic only — colors, type, borders. Dawn keeps the layout
-   (grid/flex/widths) so the item rows never collapse.
+   CART DRAWER  (custom flex build — snippets/cart-drawer.liquid)
+   Self-contained layout. We own every class (vs-cart__*, vs-ci__*)
+   so Dawn's collapsing table/grid is gone for good.
    ============================================================ */
 cart-drawer,
 .cart-drawer {
   font-family: var(--font-lato) !important;
 }
 
-/* Overlay */
 .cart-drawer__overlay {
   background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Drawer panel — white body, soft shadow */
-.cart-drawer .drawer__inner {
+/* Panel — force a clean flex column even in Dawn's empty state */
+.cart-drawer .drawer__inner,
+cart-drawer.is-empty .drawer__inner {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
   background-color: var(--vs-white) !important;
   box-shadow: -4px 0 40px rgba(0, 0, 0, 0.2) !important;
 }
 
-.cart-drawer .drawer__inner.gradient {
-  background: var(--vs-white) !important;
-}
-
-/* Header — dark bar that bleeds to the panel edges */
-.cart-drawer .drawer__header {
+/* ── Header ───────────────────────────────────────────────── */
+.vs-cart__header,
+cart-drawer.is-empty .vs-cart__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex: 0 0 auto !important;
+  padding: 1.8rem 2rem !important;
+  margin: 0 !important;
   background-color: var(--vs-dark) !important;
   border-bottom: 3px solid var(--vs-accent) !important;
-  margin: 0 -1.5rem 1.5rem !important;
-  padding: 1.8rem 2.4rem !important;
 }
 
-.cart-drawer .drawer__heading {
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
+.vs-cart__title {
   font-size: 1.2rem !important;
+  font-weight: 700 !important;
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
   color: var(--vs-white) !important;
   margin: 0 !important;
 }
 
-/* Close button — white icon inside the dark header */
-.cart-drawer .drawer__close {
-  color: var(--vs-white) !important;
-  top: 50% !important;
-  right: 1.6rem !important;
-  transform: translateY(-50%) !important;
+.vs-cart__close {
+  position: static !important;
+  transform: none !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  width: 3.4rem !important;
+  height: 3.4rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  cursor: pointer !important;
+  transition: background-color var(--transition-base), border-color var(--transition-base) !important;
 }
 
-.cart-drawer .drawer__close svg {
+.vs-cart__close:hover {
+  background-color: var(--vs-accent) !important;
+  border-color: var(--vs-accent) !important;
+}
+
+.vs-cart__close .svg-wrapper,
+.vs-cart__close svg {
+  width: 1.4rem !important;
+  height: 1.4rem !important;
+}
+
+.vs-cart__close svg {
   fill: var(--vs-white) !important;
 }
 
-.cart-drawer .drawer__close:hover svg {
-  fill: var(--vs-accent) !important;
+/* ── Items (scroll area) ──────────────────────────────────── */
+.vs-cart__items {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: block !important;
 }
 
-/* Table heading row */
-.cart-drawer .cart-items thead th {
-  font-family: var(--font-lato) !important;
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: var(--vs-body) !important;
+.vs-cart__list {
+  padding: 0 2rem !important;
+}
+
+/* Item row */
+.vs-ci {
+  display: flex !important;
+  gap: 1.4rem !important;
+  padding: 1.8rem 0 !important;
   border-bottom: 1px solid var(--vs-surface) !important;
+  position: relative;
 }
 
-/* Row divider */
-.cart-drawer .cart-items td {
-  border-bottom: 1px solid var(--vs-surface) !important;
+.vs-ci__media {
+  flex: 0 0 8rem;
+  width: 8rem;
+  display: block;
 }
 
-/* Product name — override Dawn's .break (word-break) so it wraps as words */
-.cart-drawer .cart-item__name,
-.cart-drawer .cart-item__name.break {
-  font-family: var(--font-lato) !important;
-  font-size: 1.4rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.02em !important;
+.vs-ci__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--vs-surface);
+}
+
+/* Body — min-width:0 lets the name wrap as words, never letter-by-letter */
+.vs-ci__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vs-ci__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.vs-ci__titles {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.vs-ci__vendor {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vs-body);
+  opacity: 0.7;
+  margin-bottom: 0.2rem;
+}
+
+.vs-ci__name {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
   color: var(--vs-heading) !important;
-  text-decoration: none !important;
-  line-height: 1.3 !important;
-  word-break: normal !important;
-  overflow-wrap: anywhere !important;
-  transition: color var(--transition-base) !important;
+  text-decoration: none;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  transition: color var(--transition-base);
 }
 
-.cart-drawer .cart-item__name:hover {
+.vs-ci__name:hover {
   color: var(--vs-accent) !important;
 }
 
-/* Variant / option text */
-.cart-drawer .product-option {
-  font-family: var(--font-lato) !important;
-  color: var(--vs-body) !important;
+.vs-ci__options {
+  margin-top: 0.6rem;
 }
 
-/* Prices */
-.cart-drawer .cart-item__price-wrapper .price {
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
-  color: var(--vs-heading) !important;
+.vs-ci__option,
+.vs-ci__option dt,
+.vs-ci__option dd {
+  display: inline;
+  font-size: 1.2rem;
+  color: var(--vs-body);
+  margin: 0;
 }
 
-.cart-drawer .cart-item__old-price {
-  opacity: 0.45 !important;
+.vs-ci__option {
+  display: block;
 }
 
-/* Quantity stepper — squared, branded, but no fixed widths */
-.cart-drawer .quantity {
+.vs-ci__discounts {
+  margin-top: 0.6rem;
+}
+
+.vs-ci__discount {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--vs-accent);
+}
+
+.vs-ci__discount svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Price (top-right) — never wraps */
+.vs-ci__price {
+  flex: 0 0 auto;
+  text-align: right;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  color: var(--vs-heading);
+}
+
+.vs-ci__price-now {
+  font-weight: 700;
+}
+
+.vs-ci__price-was {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--vs-body);
+  opacity: 0.5;
+}
+
+/* Bottom row: quantity + remove */
+.vs-ci__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.vs-ci__qty {
+  display: inline-flex !important;
+  align-items: center;
+  width: auto !important;
+  height: 3.4rem;
   border: 1px solid var(--vs-surface) !important;
   border-radius: 0 !important;
 }
 
-.cart-drawer .quantity__button {
-  color: var(--vs-heading) !important;
-  transition: background-color var(--transition-base) !important;
+.vs-ci__qty .quantity__button {
+  width: 3.2rem;
+  height: 100%;
+  min-height: 0;
+  background: transparent;
+  border: none;
+  color: var(--vs-heading);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-base);
 }
 
-.cart-drawer .quantity__button:hover {
-  background-color: var(--vs-surface) !important;
+.vs-ci__qty .quantity__button:hover {
+  background-color: var(--vs-surface);
 }
 
-.cart-drawer .quantity__input {
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
-  color: var(--vs-heading) !important;
+.vs-ci__qty .quantity__button svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
-/* Remove button */
-.cart-drawer .cart-remove-button {
-  color: var(--vs-body) !important;
-  transition: color var(--transition-base) !important;
+.vs-ci__qty .quantity__input {
+  width: 3.4rem;
+  height: 100%;
+  padding: 0;
+  text-align: center;
+  border: none !important;
+  background: transparent;
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+  -moz-appearance: textfield;
 }
 
-.cart-drawer .cart-remove-button:hover {
-  color: var(--vs-accent) !important;
+.vs-ci__qty .quantity__input::-webkit-outer-spin-button,
+.vs-ci__qty .quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-.cart-drawer .cart-remove-button svg {
-  fill: currentColor !important;
+.vs-ci__remove-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--vs-body);
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-base);
 }
 
-/* Empty state */
-.cart__empty-text {
-  font-family: var(--font-lato) !important;
-  font-weight: 300 !important;
-  color: var(--vs-body) !important;
+.vs-ci__remove-btn:hover {
+  color: var(--vs-accent);
 }
 
-/* Footer */
-.cart-drawer .drawer__footer {
+.vs-ci__remove-btn svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
+}
+
+/* Loading spinner overlay */
+.vs-ci .loading__spinner {
+  position: absolute;
+  top: 1.8rem;
+  right: 0;
+  z-index: 2;
+}
+
+/* Per-line error */
+.vs-ci__error {
+  margin-top: 0.4rem;
+}
+
+.vs-ci__error .cart-item__error-text {
+  font-size: 1.2rem;
+  color: var(--vs-accent);
+}
+
+.vs-ci__error .cart-item__error-text:empty {
+  display: none;
+}
+
+/* ── Empty state ──────────────────────────────────────────── */
+.vs-cart__empty {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.vs-cart__empty-text {
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--vs-body);
+  letter-spacing: 0.04em;
+}
+
+.vs-cart__empty-cta {
+  margin-top: 0.4rem;
+}
+
+.vs-cart__login-title {
+  margin-top: 1.6rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+}
+
+.vs-cart__login-paragraph {
+  font-size: 1.3rem;
+  color: var(--vs-body);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.vs-cart__footer {
+  flex: 0 0 auto !important;
+  padding: 1.8rem 2rem 2rem !important;
   background-color: var(--vs-white) !important;
   border-top: 1px solid var(--vs-surface) !important;
 }
 
-/* Cart note summary */
-.cart-drawer .summary__title {
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  color: var(--vs-body) !important;
+.vs-cart__footer.is-empty {
+  display: none !important;
+}
+
+/* Cart note */
+.vs-cart__note-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--vs-body);
+  padding: 0.8rem 0;
+}
+
+.vs-cart__note-summary::-webkit-details-marker {
+  display: none;
+}
+
+.vs-cart__note-input {
+  width: 100%;
+  margin: 0.8rem 0 1.2rem;
+  min-height: 7rem;
+}
+
+.vs-cart__discounts {
+  margin-bottom: 1rem;
 }
 
 /* Totals */
-.cart-drawer .totals__total {
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: var(--vs-body) !important;
+.vs-cart__totals {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--vs-surface);
 }
 
-.cart-drawer .totals__total-value,
-.cart-drawer .totals__subtotal-value {
-  font-family: var(--font-lato) !important;
-  font-size: 2rem !important;
-  font-weight: 700 !important;
-  color: var(--vs-heading) !important;
+.vs-cart__totals-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--vs-body);
 }
 
-/* Tax note */
-.cart-drawer .tax-note {
-  color: var(--vs-body) !important;
+.vs-cart__totals-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vs-heading);
+}
+
+.vs-cart__tax {
+  font-size: 1.1rem;
+  color: var(--vs-body);
   opacity: 0.7;
+  margin-bottom: 1.4rem;
+  line-height: 1.5;
 }
 
-/* Discount lines */
-.cart-drawer .discounts__discount {
-  font-family: var(--font-lato) !important;
-  color: var(--vs-accent) !important;
-  font-weight: 700 !important;
+/* Checkout button */
+.vs-cart__checkout {
+  display: block;
+  width: 100%;
+  padding: 1.8rem;
+  background-color: var(--vs-dark);
+  color: var(--vs-white);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-lato);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
 }
 
-/* Checkout button — dark, accent on hover */
-.cart-drawer .cart__checkout-button,
-.cart-drawer #CartDrawer-Checkout,
-.cart-drawer .button {
-  background-color: var(--vs-dark) !important;
-  background-image: none !important;
-  color: var(--vs-white) !important;
-  border: none !important;
-  font-family: var(--font-lato) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  font-size: 1.3rem !important;
-  border-radius: 0 !important;
-  transition: background-color var(--transition-base) !important;
+.vs-cart__checkout:hover {
+  background-color: var(--vs-accent);
 }
 
-.cart-drawer .cart__checkout-button:hover,
-.cart-drawer #CartDrawer-Checkout:hover,
-.cart-drawer .button:hover {
-  background-color: var(--vs-accent) !important;
-}
-
-/* Error state */
-.cart-drawer .cart-item__error-text {
-  font-family: var(--font-lato) !important;
-  color: var(--vs-accent) !important;
+.vs-cart__checkout:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ============================================================
@@ -1834,52 +2059,84 @@ textarea:focus {
 }
 
 /* ============================================================
-   MOBILE MENU DRAWER
+   MOBILE MENU DRAWER  (custom build — snippets/header-drawer.liquid)
+   Solid dark panel, flex column: brand / scrolling links / utility.
+   The `gradient` + `color-scheme` classes were removed from the markup,
+   so nothing re-applies a background and the hero can't bleed through.
    ============================================================ */
 
-/* Dark panel — matches the site header */
+/* Solid dark panel */
 .menu-drawer {
   background-color: var(--vs-dark) !important;
+  background-image: none !important;
   border-top: 3px solid var(--vs-accent) !important;
   box-shadow: 4px 0 40px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Gradient/color-scheme override so Dawn doesn't re-apply its bg */
-.menu-drawer.gradient {
-  background: var(--vs-dark) !important;
+.menu-drawer__inner-container {
+  position: relative;
+  height: 100%;
+  background-color: var(--vs-dark) !important;
 }
 
-/* Carry the dark fill through every inner container so the hero can
-   never show through behind the links (was bleeding through before) */
-.menu-drawer__inner-container,
-.menu-drawer__navigation-container,
-.menu-drawer__navigation,
+/* Flex column so links scroll in the middle and never escape the panel */
+.menu-drawer__navigation-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-content: stretch !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background-color: var(--vs-dark) !important;
+}
+
+/* Brand wordmark at the top */
+.menu-drawer__brand {
+  flex: 0 0 auto;
+  padding: 2.4rem 3rem 1.6rem;
+  font-family: var(--font-lato);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--vs-accent);
+  margin: 0;
+}
+
+.menu-drawer__navigation {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  padding: 0.5rem 0 !important;
+  background-color: var(--vs-dark) !important;
+}
+
 .menu-drawer__inner-submenu {
   background-color: var(--vs-dark) !important;
 }
 
-/* Submenu sits over the nav — keep it fully opaque dark */
-.menu-drawer__submenu.gradient,
+/* Submenu slides over the nav — keep it fully opaque */
 .menu-drawer__submenu {
   background-color: #0c0c0c !important;
-  background: #0c0c0c !important;
+  background-image: none !important;
 }
 
 /* ── Nav links ─────────────────────────────────────────────── */
-.menu-drawer__menu-item,
-.menu-drawer__navigation-item > a {
+.menu-drawer__menu-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  padding: 1.5rem 3rem !important;
   font-family: var(--font-lato) !important;
-  font-size: 1.4rem !important;
+  font-size: 1.5rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
   transition: color var(--transition-base), background-color var(--transition-base) !important;
 }
 
-.menu-drawer__menu-item:hover,
-.menu-drawer__navigation-item > a:hover {
+.menu-drawer__menu-item:hover {
   color: var(--vs-white) !important;
   background-color: rgba(255, 255, 255, 0.06) !important;
 }
@@ -1887,12 +2144,26 @@ textarea:focus {
 .menu-drawer__menu-item--active,
 .menu-drawer__menu-item[aria-current="page"] {
   color: var(--vs-accent) !important;
-  border-left: 3px solid var(--vs-accent) !important;
+  box-shadow: inset 3px 0 0 var(--vs-accent) !important;
 }
 
-/* ── Submenu ───────────────────────────────────────────────── */
+/* Caret on parent items */
+.menu-drawer__arrow {
+  position: static !important;
+  transform: none !important;
+  width: 1.2rem !important;
+  display: inline-flex !important;
+}
+
+.menu-drawer__menu-item .menu-drawer__arrow svg {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  fill: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ── Submenu items ─────────────────────────────────────────── */
 .menu-drawer__submenu .menu-drawer__menu-item {
-  font-size: 1.2rem !important;
+  font-size: 1.3rem !important;
   color: rgba(255, 255, 255, 0.55) !important;
 }
 
@@ -1903,32 +2174,38 @@ textarea:focus {
 /* Back button */
 .menu-drawer__close-button {
   font-family: var(--font-lato) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.2rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   color: var(--vs-accent) !important;
   background: transparent !important;
+  padding: 1.5rem 3rem !important;
 }
 
-/* Arrow/caret icons */
-.menu-drawer__menu-item svg,
-.menu-drawer__navigation-item > a svg {
-  fill: rgba(255, 255, 255, 0.35) !important;
+.menu-drawer__close-button svg {
+  fill: var(--vs-accent) !important;
 }
 
-/* ── Utility area (account + social) ──────────────────────── */
+/* ── Utility area (account + social + localization) ───────── */
 .menu-drawer__utility-links {
+  flex: 0 0 auto !important;
+  padding: 2rem 3rem !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .menu-drawer__account {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
   font-family: var(--font-lato) !important;
   font-size: 1.2rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  margin-bottom: 1.6rem !important;
   transition: color var(--transition-base) !important;
 }
 
@@ -1936,21 +2213,63 @@ textarea:focus {
   color: var(--vs-white) !important;
 }
 
-.menu-drawer .list-social__link svg {
-  fill: rgba(255, 255, 255, 0.5) !important;
+.menu-drawer__account svg {
+  width: 1.8rem !important;
+  height: 1.8rem !important;
+  fill: currentColor !important;
+}
+
+.menu-drawer__social {
+  display: flex !important;
+  gap: 0.8rem !important;
+  flex-wrap: wrap !important;
+  margin: 1.6rem 0 0 !important;
+}
+
+.menu-drawer__social .list-social__link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3.6rem !important;
+  height: 3.6rem !important;
+  padding: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transition: background-color var(--transition-base), border-color var(--transition-base) !important;
+}
+
+.menu-drawer__social .list-social__link:hover {
+  background-color: var(--vs-accent) !important;
+  border-color: var(--vs-accent) !important;
+}
+
+.menu-drawer__social .list-social__link svg {
+  width: 1.6rem !important;
+  height: 1.6rem !important;
+  fill: rgba(255, 255, 255, 0.6) !important;
   transition: fill var(--transition-base) !important;
 }
 
-.menu-drawer .list-social__link:hover svg {
-  fill: var(--vs-accent) !important;
+.menu-drawer__social .list-social__link:hover svg {
+  fill: var(--vs-white) !important;
 }
 
 /* Localization selects */
+.menu-drawer__localization {
+  margin-bottom: 1.6rem;
+}
+
+.menu-drawer__localization .localization-form__select,
 .menu-drawer__localization .select__select {
   background-color: rgba(255, 255, 255, 0.08) !important;
   color: rgba(255, 255, 255, 0.7) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   font-family: var(--font-lato) !important;
+}
+
+/* Hamburger / close icon in the header stays white */
+.header__icon--menu .svg-wrapper svg {
+  fill: var(--vs-white) !important;
+  color: var(--vs-white) !important;
 }
 
 /* ============================================================
