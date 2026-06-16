@@ -251,13 +251,13 @@ p {
 }
 
 .header {
-  background-color: var(--vs-white);
-  border-bottom: 1px solid var(--vs-surface);
+  background-color: var(--vs-dark) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   transition: box-shadow var(--transition-base);
 }
 
 .header.is-scrolled {
-  box-shadow: 0 2px 20px rgba(12, 26, 43, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .header__heading-link,
@@ -271,6 +271,7 @@ p {
   width: auto;
   max-width: 18rem;
   object-fit: contain;
+  filter: brightness(0) invert(1) !important;
 }
 
 /* Nav links */
@@ -281,7 +282,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--vs-heading);
+  color: var(--vs-white) !important;
   transition: color var(--transition-base);
   position: relative;
 }
@@ -304,18 +305,19 @@ p {
 
 .header__menu-item:hover,
 .header__active-menu-item {
-  color: var(--vs-accent);
+  color: var(--vs-accent) !important;
 }
 
-/* Cart icon */
-.header__icon--cart svg,
-.cart-count-bubble {
-  color: var(--vs-heading);
+/* Header Icons & Cart */
+.header__icon,
+.header__icon svg,
+.header__icon--cart svg {
+  color: var(--vs-white) !important;
 }
 
 .cart-count-bubble {
   background-color: var(--vs-accent);
-  color: var(--vs-white);
+  color: var(--vs-white) !important;
   font-family: var(--font-lato);
   font-weight: 700;
   font-size: 1rem;
@@ -1586,9 +1588,20 @@ textarea:focus {
 /* ============================================================
    ANNOUNCEMENT BAR
    ============================================================ */
-.section-announcement-bar-default .announcement-bar {
-  background-color: var(--vs-heading);
-  border-bottom: none;
+.utility-bar {
+  background-color: var(--vs-dark) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: var(--vs-white) !important;
+}
+
+.utility-bar a,
+.utility-bar span,
+.utility-bar svg {
+  color: var(--vs-white) !important;
+}
+
+.announcement-bar {
+  background-color: transparent !important;
 }
 
 .announcement-bar__message {
@@ -1597,7 +1610,7 @@ textarea:focus {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--vs-white);
+  color: var(--vs-white) !important;
 }
 
 /* ============================================================
