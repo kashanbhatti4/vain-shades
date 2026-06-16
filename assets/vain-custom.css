@@ -3,17 +3,8 @@
    Bold & Editorial. Atlanta Luxury Eyewear.
    ============================================================ */
 
-/* ── Google Fonts: Lato ─────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-
-/* ── Momo Signature @font-face ───────────────────────────── */
-@font-face {
-  font-family: 'Momo Signature';
-  src: url('MomoSignature-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/* ── Google Sans Font ─────────────────────────────────────── */
+@import url('https://fonts.cdnfonts.com/css/google-sans');
 
 /* ============================================================
    DESIGN TOKENS
@@ -30,8 +21,12 @@
   --vs-accent-hover:  #9e3514;
 
   /* Typography */
-  --font-momo:    'Momo Signature', cursive;
-  --font-lato:    'Lato', sans-serif;
+  --font-momo:    'Google Sans', sans-serif;
+  --font-lato:    'Google Sans', sans-serif;
+  
+  /* Force Google Sans on Dawn native custom properties */
+  --font-body-family: 'Google Sans', sans-serif !important;
+  --font-heading-family: 'Google Sans', sans-serif !important;
 
   /* Spacing */
   --section-gap:  7rem;
@@ -432,12 +427,10 @@ p {
 .banner__heading {
   font-family: var(--font-lato) !important;
   font-weight: 300 !important;
-  color: var(--vs-white) !important;
   letter-spacing: -0.03em !important;
 }
 
 .banner__text {
-  color: rgba(255,255,255,0.85) !important;
   font-weight: 300 !important;
 }
 
@@ -501,7 +494,6 @@ p {
 .featured-collection h2 {
   font-family: var(--font-lato) !important;
   font-weight: 300 !important;
-  color: var(--vs-heading) !important;
 }
 
 /* ============================================================
@@ -572,7 +564,7 @@ p {
 }
 
 /* Dawn rich-text overrides for statement */
-.rich-text__blocks {
+.vs-statement .rich-text__blocks {
   color: var(--vs-white);
 }
 
@@ -780,7 +772,6 @@ p {
 .image-with-text__heading {
   font-family: var(--font-lato) !important;
   font-weight: 300 !important;
-  color: var(--vs-heading) !important;
 }
 
 /* ============================================================
@@ -1158,7 +1149,6 @@ p {
 .section-collection-banner-default h1 {
   font-family: var(--font-lato) !important;
   font-weight: 300 !important;
-  color: var(--vs-heading) !important;
   font-size: clamp(3rem, 6vw, 5.6rem) !important;
   letter-spacing: -0.02em !important;
 }
@@ -1652,7 +1642,6 @@ nav[aria-label="breadcrumbs"] a:hover {
 .section-main-page .page-title {
   font-family: var(--font-lato) !important;
   font-weight: 300 !important;
-  color: var(--vs-heading) !important;
   font-size: clamp(3rem, 6vw, 5.6rem) !important;
   letter-spacing: -0.02em !important;
 }
@@ -1672,11 +1661,9 @@ nav[aria-label="breadcrumbs"] a:hover {
 .multicolumn .column__heading {
   font-family: var(--font-lato) !important;
   font-weight: 700 !important;
-  color: var(--vs-heading) !important;
 }
 
 .multicolumn .rte {
-  color: var(--vs-body) !important;
   font-family: var(--font-lato) !important;
 }
 
