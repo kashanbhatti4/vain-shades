@@ -44,7 +44,7 @@
         "cta"
       ],
       "settings": {
-        "image": "shopify://shop_images/herobg.jpg",
+        "image": "shopify://shop_images/herobg2.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
