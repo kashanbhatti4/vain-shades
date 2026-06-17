@@ -3508,7 +3508,7 @@ nav[aria-label="breadcrumbs"] a:hover {
 .vs-product-card__swatch {
   width: 1.6rem;
   height: 1.6rem;
-  border-radius: 2px;
+  border-radius: 50%;
   display: inline-block;
   background-size: cover;
   background-position: center;
@@ -5190,7 +5190,7 @@ a.vs-collection__page-num:hover {
 
 .vs-product__swatches { display: flex; gap: 1.4rem; flex-wrap: wrap; }
 .vs-product__swatch {
-  width: 3.2rem; height: 3.2rem; border-radius: 2px; border: 2px solid transparent;
+  width: 3.2rem; height: 3.2rem; border-radius: 50%; border: 2px solid transparent;
   cursor: pointer; outline: 2px solid transparent; outline-offset: 2px;
   transition: outline-color 0.2s ease, transform 0.2s ease;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
