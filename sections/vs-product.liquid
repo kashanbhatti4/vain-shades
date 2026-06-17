@@ -116,14 +116,23 @@
                 <!-- Color swatch buttons -->
                 <div class="vs-product__swatches">
                   {%- for value in option.values -%}
-                    {%- assign swatch_color = value | split: ' ' | last | handle -%}
+                    {%- liquid
+                      if value.swatch.image
+                        assign swatch_img = value.swatch.image | image_url: width: 100
+                        assign swatch_style = 'background-image:url(' | append: swatch_img | append: ');background-size:cover;background-position:center;'
+                      elsif value.swatch.color
+                        assign swatch_style = 'background-color:' | append: value.swatch.color | append: ';'
+                      else
+                        assign fallback_color = value | split: ' ' | last | handle
+                        assign swatch_style = 'background-color:' | append: fallback_color | append: ';'
+                      endif
+                    -%}
                     <button
                       type="button"
                       class="vs-product__swatch {% if value == option.selected_value %}is-active{% endif %}"
                       data-value="{{ value | escape }}"
                       data-option-index="{{ forloop.parentloop.index0 }}"
-                      data-color="{{ swatch_color }}"
-                      style="background-color: {{ swatch_color }};"
+                      style="{{ swatch_style }}"
                       title="{{ value | escape }}"
                       aria-label="{{ value | escape }}"
                     ></button>
