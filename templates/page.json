@@ -12,8 +12,8 @@
     "about_hero": {
       "type": "vs-about-hero",
       "settings": {
-        "image": "shopify://shop_images/about.jpg",
-        "image_mobile": "shopify://shop_images/about-m.jpg",
+        "image": "shopify://shop_images/abouthero2.jpg",
+        "image_mobile": "shopify://shop_images/abouthero-m2.jpg",
         "eyebrow": "OUR STORY",
         "heading": "Born to stand out.",
         "subtext": "<p>Vain Shades designs and crafts statement luxury eyewear for the unapologetic and glamorous.</p>",
