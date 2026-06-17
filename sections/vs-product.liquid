@@ -308,6 +308,35 @@
                 <div class="vs-product-card__details">
                   <div class="vs-product-card__meta-row">
                     <span class="vs-product-card__type">{{ p.type | upcase | default: 'LUXURY SHADES' }}</span>
+
+                    {%- for option in p.options_with_values -%}
+                      {%- assign option_name_lower = option.name | downcase -%}
+                      {%- if option_name_lower == 'color' or option_name_lower == 'colour' -%}
+                        <div class="vs-product-card__swatches" aria-label="Available Colors">
+                          {%- for value in option.values limit: 3 -%}
+                            {%- liquid
+                              if value.swatch.color
+                                assign swatch_style = 'background-color:' | append: value.swatch.color | append: ';'
+                              elsif value.swatch.image
+                                assign swatch_img = value.swatch.image | image_url: width: 100
+                                assign swatch_style = 'background-image:url(' | append: swatch_img | append: ');background-size:cover;background-position:center;'
+                              else
+                                assign fallback_color = value | split: ' ' | last | handle
+                                assign swatch_style = 'background-color:' | append: fallback_color | append: ';'
+                              endif
+                            -%}
+                            <span
+                              class="vs-product-card__swatch"
+                              style="{{ swatch_style }}"
+                              title="{{ value | escape }}"
+                            ></span>
+                          {%- endfor -%}
+                          {%- if option.values.size > 3 -%}
+                            <span class="vs-product-card__swatches-more">+{{ option.values.size | minus: 3 }}</span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
                   </div>
                   <h3 class="vs-product-card__title"><a href="{{ p.url }}">{{ p.title }}</a></h3>
                   <div class="vs-product-card__price">
