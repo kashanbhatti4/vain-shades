@@ -333,6 +333,15 @@
 (function () {
   var productData = {{ product.variants | json }};
 
+  // Map each variant id -> its assigned media slide index (0-based).
+  // Lets us swap the gallery image when a variant is selected.
+  var variantMediaIndex = {};
+  {%- for variant in product.variants -%}
+    {%- if variant.featured_media != blank -%}
+      variantMediaIndex[{{ variant.id }}] = {{ variant.featured_media.position | minus: 1 }};
+    {%- endif -%}
+  {%- endfor -%}
+
   // Gallery
   var currentIndex = 0;
   var slides = document.querySelectorAll('.vs-product__slide');
@@ -395,6 +404,11 @@
 
     // Variant ID
     document.getElementById('vs-variant-id').value = variant.id;
+
+    // Swap gallery to the variant's assigned image
+    if (variantMediaIndex.hasOwnProperty(variant.id)) {
+      goTo(variantMediaIndex[variant.id]);
+    }
 
     // Button / availability
     var addBtn = document.getElementById('vs-add-btn');
