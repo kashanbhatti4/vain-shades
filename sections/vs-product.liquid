@@ -117,11 +117,11 @@
                 <div class="vs-product__swatches">
                   {%- for value in option.values -%}
                     {%- liquid
-                      if value.swatch.image
+                      if value.swatch.color
+                        assign swatch_style = 'background-color:' | append: value.swatch.color | append: ';'
+                      elsif value.swatch.image
                         assign swatch_img = value.swatch.image | image_url: width: 100
                         assign swatch_style = 'background-image:url(' | append: swatch_img | append: ');background-size:cover;background-position:center;'
-                      elsif value.swatch.color
-                        assign swatch_style = 'background-color:' | append: value.swatch.color | append: ';'
                       else
                         assign fallback_color = value | split: ' ' | last | handle
                         assign swatch_style = 'background-color:' | append: fallback_color | append: ';'
