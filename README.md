@@ -1,7 +1,7 @@
 # vain-shades
 
 **Vain Shades** — Custom Shopify Theme  
-Exclusive luxury eyewear brand based in Atlanta, Georgia.  
+Exclusive luxury eyewear brand based in Miami, Florida.  
 Statement sunglasses. Bold. Glamorous. Fashion-forward.
 
 ---
@@ -10,7 +10,7 @@ Statement sunglasses. Bold. Glamorous. Fashion-forward.
 
 - **Price Range:** $180 – $360
 - **Platform:** Shopify (Dawn theme base)
-- **Available:** Online + select Villain retail locations, Atlanta
+- **Available:** Online + select Villain retail locations, Miami
 
 ---
 
@@ -126,4 +126,4 @@ All brand styling lives in `assets/vain-custom.css`. It:
 
 ---
 
-*Built with ❤️ for Vain Shades, Atlanta GA*
+*Built with ❤️ for Vain Shades, Miami GA*

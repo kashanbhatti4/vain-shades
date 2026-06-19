@@ -26,7 +26,7 @@
         "item_1": {
           "type": "text",
           "settings": {
-            "text": "BORN IN ATLANTA"
+            "text": "BORN IN MIAMI"
           }
         },
         "item_2": {
@@ -64,9 +64,9 @@
     "brand_statement": {
       "type": "vs-brand-statement",
       "settings": {
-        "subheading": "Vain Shades — Atlanta, GA",
+        "subheading": "Vain Shades — Miami, FL",
         "heading": "Because ordinary was never an option.",
-        "body_text": "<p>Exclusive luxury eyewear for those who live boldly and refuse to blend in. Designed with zero compromises on craftsmanship and style, our statement frames are a testament to individuality. Available online and exclusively in select Villain retail locations across Atlanta, Georgia. Discover the collection that redefines contemporary luxury eyewear.</p>"
+        "body_text": "<p>Exclusive luxury eyewear for those who live boldly and refuse to blend in. Designed with zero compromises on craftsmanship and style, our statement frames are a testament to individuality. Available online and exclusively in select Villain retail locations across Miami, Florida. Discover the collection that redefines contemporary luxury eyewear.</p>"
       }
     },
     "editorial_grid": {
@@ -160,7 +160,7 @@
         "image": "shopify://shop_images/home-img2.jpg",
         "image_position": "left",
         "eyebrow": "HANDCRAFTED EXCELLENCE",
-        "title": "Atlanta Crafted. Italian Engineered.",
+        "title": "Miami Crafted. Italian Engineered.",
         "description": "Every pair of Vain Shades represents a dedication to pure, unadulterated style. Formed from custom acetate sheets, polished by hand for 72 hours, and fitted with high-definition lenses.",
         "button_label": "View Editorial Story",
         "button_link": "shopify://collections/all",

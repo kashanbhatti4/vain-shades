@@ -1,6 +1,6 @@
 /**
  * Vain Shades — Custom JavaScript
- * Bold & Editorial. Atlanta Luxury Eyewear.
+ * Bold & Editorial. Miami Luxury Eyewear.
  * ============================================================ */
 
 'use strict';
@@ -176,7 +176,7 @@ const vsMarquee = {
       'SEE THE WORLD DIFFERENTLY',
       'VAIN SHADES — STATEMENT EYEWEAR. BOLD. GLAMOROUS. UNAPOLOGETIC.',
       'FREE EXPRESS SHIPPING ON ALL ORDERS OVER $150',
-      'BORN IN ATLANTA. BUILT FOR THE BOLD.'
+      'BORN IN MIAMI. BUILT FOR THE BOLD.'
     ];
 
     const repeatedText = messages.map(m => `<span>${m}</span>`).join(' &nbsp;&bull;&nbsp; ');
