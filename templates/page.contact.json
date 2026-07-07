@@ -16,7 +16,7 @@
           "type": "info_block",
           "settings": {
             "title": "Customer Support",
-            "content": "<p>Mon – Fri: 9am – 6pm EST<br>Email: support@vainshades.com<br>Phone: (404) 555-0199</p>"
+            "content": "<p>Mon – Fri: 9am – 6pm EST<br/>Email: support@vainshades.com<br/></p>"
           }
         },
         "info_2": {
@@ -34,13 +34,18 @@
           }
         }
       },
-      "block_order": ["info_1", "info_2", "info_3"],
+      "block_order": [
+        "info_1",
+        "info_2",
+        "info_3"
+      ],
       "settings": {
         "title": "Connect with Vain.",
-        "description": "Have a styling question or need support with your order? Reach out to our design and customer service team.",
-        "color_scheme": "scheme-1"
+        "description": "Have a styling question or need support with your order? Reach out to our design and customer service team."
       }
     }
   },
-  "order": ["vs-contact"]
+  "order": [
+    "vs-contact"
+  ]
 }
