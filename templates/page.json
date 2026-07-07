@@ -72,18 +72,18 @@
         "loc_1": {
           "type": "location",
           "settings": {
-            "title": "Design District Showroom",
-            "address": "140 NE 39th St\nMiami, FL 33137",
-            "hours": "<p>Mon - Sat: 11am - 7pm<br>Sun: 12pm - 6pm</p>",
+            "title": "Brickell City Center",
+            "address": "701 S Miami Ave\nMiami, FL 33130",
+            "hours": "<p>Mon - Sat: 11am - 7pm<br/>Sun: 12pm - 6pm</p>",
             "link": ""
           }
         },
         "loc_2": {
           "type": "location",
           "settings": {
-            "title": "Lincoln Road Boutique",
-            "address": "1100 Lincoln Rd\nMiami Beach, FL 33139",
-            "hours": "<p>Mon - Sat: 10am - 9pm<br>Sun: 11am - 8pm</p>",
+            "title": "Aventura Mall",
+            "address": "19501 Biscayne Blvd\nAventura, FL 33180",
+            "hours": "<p>Mon - Sat: 10am - 9pm<br/>Sun: 11am - 8pm</p>",
             "link": ""
           }
         }
